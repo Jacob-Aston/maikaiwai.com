@@ -8,10 +8,11 @@ body {
   height: 100%;
   overflow: hidden;
   font-family: system-ui, -apple-system, sans-serif;
+  scroll-behavior: smooth; /* for future smooth scrolling if needed */
 }
 
 /* ===================================
-   2. Horizontal Scrolling Container
+   2. Horizontal Scrolling Container (Desktop)
    =================================== */
 .container {
   display: flex;
@@ -35,30 +36,30 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative; /* for future ::after dividers */
 }
 
-/* Hero panel — lowest layer */
+/* Hero — lowest layer */
 .hero {
-  position: relative;
   z-index: 1;
-  background: #ffffff; /* Change this to your desired hero background */
+  background: #ffffff; /* customize freely */
 }
 
-/* All content panels — cover the hero/logo */
+/* Content panels — cover hero/logo */
 .panel:not(.hero) {
   z-index: 10;
-  background: #ffffff; /* Your main content background */
+  background: #ffffff;
 }
 
 /* ===================================
-   4. Fixed Hero Logo (covered by scrolling panels)
+   4. Fixed Hero Logo
    =================================== */
 .hero-logo {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 5; /* Above hero (1), below content panels (10) */
+  z-index: 5;
   max-width: 80vw;
   max-height: 80vh;
   object-fit: contain;
@@ -66,13 +67,12 @@ body {
 }
 
 /* ===================================
-   5. Navbar (always on top)
+   5. Navbar
    =================================== */
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  inset-inline: 0; /* better than left/right for RTL */
   height: 80px;
   display: flex;
   align-items: center;
@@ -96,18 +96,7 @@ body {
 }
 
 /* ===================================
-   6. Scrollbar (optional clean look)
-   =================================== */
-.container::-webkit-scrollbar {
-  display: none;
-}
-.container {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* ===================================
-   7. Navigation Arrows (Desktop only)
+   6. Navigation Arrows (Desktop only)
    =================================== */
 .nav-arrow {
   position: fixed;
@@ -124,8 +113,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s ease;
   opacity: 0.6;
+  transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+.nav-arrow--hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .nav-arrow:hover {
@@ -136,16 +130,14 @@ body {
 .nav-arrow--left {
   left: 20px;
 }
-
 .nav-arrow--right {
   right: 20px;
 }
-
 .nav-arrow svg {
   fill: currentColor;
 }
 
-/* Hide arrows on mobile */
+/* Hide on mobile */
 @media (max-width: 768px) {
   .nav-arrow {
     display: none;
@@ -153,11 +145,11 @@ body {
 }
 
 /* ===================================
-   8. Page Indicators / Mobile Dividers
+   7. Page Indicators (Desktop) / Dividers (Mobile)
    =================================== */
 .page-indicators {
   position: fixed;
-  bottom: 30px; /* moved up a bit for better visibility */
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -167,18 +159,18 @@ body {
 }
 
 .indicator {
-  width: 50px; /* slightly longer for elegance */
+  width: 50px;
   height: 5px;
-  background: rgba(0, 0, 0, 0.3); /* visible medium gray */
+  background: rgba(0, 0, 0, 0.3);
   border-radius: 3px;
   transition: background 0.4s ease;
 }
 
 .indicator.active {
-  background: #ff6200; /* bright orange highlight — change if needed */
+  background: #ff6200; /* your brand orange */
 }
 
-/* On mobile: turn into subtle dividers */
+/* Mobile: convert to dividers */
 @media (max-width: 768px) {
   .page-indicators {
     position: static;
@@ -191,15 +183,14 @@ body {
   .indicator {
     width: 100%;
     height: 1px;
-    background: #dddddd; /* light gray divider on mobile */
+    background: #dddddd;
     border-radius: 0;
   }
 
   .indicator.active {
-    background: #dddddd; /* no highlight on mobile */
+    background: #dddddd;
   }
 
-  /* Optional: clean divider lines between panels */
   .panel:not(:last-child)::after {
     content: "";
     position: absolute;
@@ -209,4 +200,15 @@ body {
     height: 1px;
     background: #dddddd;
   }
+}
+
+/* ===================================
+   8. Scrollbar Hiding
+   =================================== */
+.container::-webkit-scrollbar {
+  display: none;
+}
+.container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

@@ -8,47 +8,63 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <nav class="navbar">
+    <!-- Fixed Navbar -->
+    <nav class="navbar" aria-label="Main navigation">
       <img
         src="assets/favicon.png"
-        alt="Home"
+        alt="Home - Maikaʻi Wai LLC"
         class="nav-logo"
         id="home-button"
       />
     </nav>
-    <!-- Navigation Arrows -->
-    <button class="nav-arrow nav-arrow--left" id="prev-button">
-      <svg viewBox="0 0 24 24" width="24" height="24">
+
+    <!-- Navigation Arrows (Desktop only) -->
+    <button
+      class="nav-arrow nav-arrow--left"
+      id="prev-button"
+      aria-label="Previous section"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
       </svg>
     </button>
-
-    <button class="nav-arrow nav-arrow--right" id="next-button">
-      <svg viewBox="0 0 24 24" width="24" height="24">
+    <button
+      class="nav-arrow nav-arrow--right"
+      id="next-button"
+      aria-label="Next section"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
       </svg>
     </button>
+
+    <!-- Main Horizontal Scrolling Container -->
     <main class="container">
-      <section class="panel hero">
-        <img src="assets/logo.png" alt="Your Business Logo" class="hero-logo" />
+      <section class="panel hero" aria-label="Hero section">
+        <img
+          src="assets/logo.png"
+          alt="Maikaʻi Wai LLC Logo"
+          class="hero-logo"
+        />
       </section>
 
-      <section class="panel">
+      <section class="panel" aria-label="Section 2">
         <h1>Section 2</h1>
         <p>Temporary content to test scrolling</p>
       </section>
 
-      <section class="panel">
+      <section class="panel" aria-label="Section 3">
         <h1>Section 3</h1>
         <p>Another panel</p>
       </section>
 
-      <section class="panel footer">
+      <section class="panel footer" aria-label="Footer">
         <h1>Footer</h1>
         <p>Social links go here</p>
       </section>
-      <!-- Page Indicator Strips -->
-      <div class="page-indicators">
+
+      <!-- Page Indicators (Desktop) / Dividers (Mobile) -->
+      <div class="page-indicators" aria-hidden="true">
         <span class="indicator" data-index="0"></span>
         <span class="indicator" data-index="1"></span>
         <span class="indicator" data-index="2"></span>
