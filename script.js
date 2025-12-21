@@ -8,3 +8,14 @@ document.getElementById("home-button").addEventListener("click", () => {
     behavior: "smooth",
   });
 });
+
+// Previous / Next arrow navigation
+const container = document.querySelector(".container");
+
+document.getElementById("prev-button").addEventListener("click", () => {
+  container.scrollBy({ left: -window.innerWidth, behavior: "smooth" });
+});
+
+document.getElementById("next-button").addEventListener("click", () => {
+  container.scrollBy({ left: window.innerWidth, behavior: "smooth" });
+});
