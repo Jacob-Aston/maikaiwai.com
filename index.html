@@ -15,10 +15,12 @@
         alt="Home - Maikaʻi Wai LLC"
         class="nav-logo"
         id="home-button"
+        role="button"
+        tabindex="0"
       />
     </nav>
 
-    <!-- Navigation Arrows (Desktop only) -->
+    <!-- Desktop-only Navigation Arrows -->
     <button
       class="nav-arrow nav-arrow--left"
       id="prev-button"
@@ -38,37 +40,49 @@
       </svg>
     </button>
 
-    <!-- Main Horizontal Scrolling Container -->
-    <main class="container">
-      <section class="panel hero" aria-label="Hero section">
+    <!-- Main Content Container -->
+    <main class="container" id="main-container">
+      <!-- Hero Section -->
+      <section class="panel hero" id="hero" aria-labelledby="hero-title">
         <img
           src="assets/logo.png"
           alt="Maikaʻi Wai LLC Logo"
           class="hero-logo"
         />
+        <!-- Optional: Add accessible heading if needed -->
+        <!-- <h1 id="hero-title" class="visually-hidden">Maikaʻi Wai LLC</h1> -->
       </section>
 
-      <section class="panel" aria-label="Section 2">
-        <h1>Section 2</h1>
-        <p>Temporary content to test scrolling</p>
+      <!-- Section 2 -->
+      <section class="panel" aria-labelledby="section2-title">
+        <div class="panel-content">
+          <h1 id="section2-title">Section 2</h1>
+          <p>Temporary content to test scrolling</p>
+        </div>
       </section>
 
-      <section class="panel" aria-label="Section 3">
-        <h1>Section 3</h1>
-        <p>Another panel</p>
+      <!-- Section 3 -->
+      <section class="panel" aria-labelledby="section3-title">
+        <div class="panel-content">
+          <h1 id="section3-title">Section 3</h1>
+          <p>Another panel for content</p>
+        </div>
       </section>
 
-      <section class="panel footer" aria-label="Footer">
-        <h1>Footer</h1>
-        <p>Social links go here</p>
+      <!-- Footer Section -->
+      <section class="panel footer" aria-labelledby="footer-title">
+        <div class="panel-content">
+          <h1 id="footer-title">Contact & Social</h1>
+          <p>Social links and contact info will go here</p>
+        </div>
       </section>
 
-      <!-- Page Indicators (Desktop) / Dividers (Mobile) -->
-      <div class="page-indicators" aria-hidden="true">
-        <span class="indicator" data-index="0"></span>
-        <span class="indicator" data-index="1"></span>
-        <span class="indicator" data-index="2"></span>
-        <span class="indicator" data-index="3"></span>
+      <!-- Desktop: Page Indicators | Mobile: Hidden -->
+      <div class="page-indicators" role="status" aria-label="Page indicators">
+        <span class="indicator" data-index="0" aria-hidden="true"></span>
+        <span class="indicator" data-index="1" aria-hidden="true"></span>
+        <span class="indicator" data-index="2" aria-hidden="true"></span>
+        <span class="indicator" data-index="3" aria-hidden="true"></span>
       </div>
     </main>
 

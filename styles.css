@@ -1,78 +1,79 @@
 /* ===================================
-   1. Global Reset & Base
+   1. Global Reset & Base Styles (Mobile-First)
    =================================== */
-html,
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* Smooth vertical scrolling on mobile */
+}
+
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100vh;
   font-family: system-ui, -apple-system, sans-serif;
-  scroll-behavior: smooth; /* for future smooth scrolling if needed */
-}
-
-/* ===================================
-   2. Horizontal Scrolling Container (Desktop)
-   =================================== */
-.container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  height: 100vh;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-}
-
-/* ===================================
-   3. Panels (Slides)
-   =================================== */
-.panel {
-  width: 100vw;
-  height: 100vh;
-  min-width: 0;
-  flex-shrink: 0;
-  scroll-snap-align: start;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative; /* for future ::after dividers */
-}
-
-/* Hero — lowest layer */
-.hero {
-  z-index: 1;
-  background: #ffffff; /* customize freely */
-}
-
-/* Content panels — cover hero/logo */
-.panel:not(.hero) {
-  z-index: 10;
+  overflow-x: hidden;
   background: #ffffff;
 }
 
-/* ===================================
-   4. Fixed Hero Logo
-   =================================== */
-.hero-logo {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 5;
-  max-width: 80vw;
-  max-height: 80vh;
-  object-fit: contain;
-  pointer-events: none;
+/* Hide scrollbar but keep functionality */
+.container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.container::-webkit-scrollbar {
+  display: none;
 }
 
 /* ===================================
-   5. Navbar
+   2. Main Container – Vertical Stack (Mobile Default)
+   =================================== */
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ===================================
+   3. Panels – Full Height on Mobile, Flexible Content
+   =================================== */
+.panel {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px 80px; /* Space for fixed navbar + breathing room */
+  position: relative;
+}
+
+.panel-content {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Hero Logo – Centered on Mobile */
+.hero-logo {
+  max-width: 90vw;
+  max-height: 70vh;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* ===================================
+   4. Navbar – Fixed Top
    =================================== */
 .navbar {
   position: fixed;
   top: 0;
-  inset-inline: 0; /* better than left/right for RTL */
+  left: 0;
+  right: 0;
   height: 80px;
   display: flex;
   align-items: center;
@@ -81,6 +82,7 @@ body {
   pointer-events: none;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .nav-logo {
@@ -91,159 +93,145 @@ body {
   transition: transform 0.2s ease;
 }
 
-.nav-logo:hover {
+.nav-logo:hover,
+.nav-logo:focus {
   transform: scale(1.1);
 }
 
 /* ===================================
-   6. Navigation Arrows (Desktop only)
+   5. Navigation Arrows – Hidden on Mobile
    =================================== */
 .nav-arrow {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
-  background: rgba(0, 0, 0, 0.3);
-  border: none;
-  border-radius: 50%;
-  color: white;
-  cursor: pointer;
-  z-index: 1100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.6;
-  transition: opacity 0.3s ease, background 0.3s ease;
-}
-
-.nav-arrow--hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.nav-arrow:hover {
-  background: rgba(0, 0, 0, 0.6);
-  opacity: 1;
-}
-
-.nav-arrow--left {
-  left: 20px;
-}
-.nav-arrow--right {
-  right: 20px;
-}
-.nav-arrow svg {
-  fill: currentColor;
-}
-
-/* Hide on mobile */
-@media (max-width: 768px) {
-  .nav-arrow {
-    display: none;
-  }
+  display: none; /* Hidden by default (mobile) */
 }
 
 /* ===================================
-   7. Page Indicators (Desktop) / Dividers (Mobile)
+   6. Page Indicators – Hidden on Mobile
    =================================== */
 .page-indicators {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 12px;
-  z-index: 1200;
-  pointer-events: none;
+  display: none;
 }
 
-.indicator {
-  width: 50px;
-  height: 5px;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 3px;
-  transition: background 0.4s ease;
+/* Optional subtle divider between sections on mobile */
+.panel:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: #dddddd;
 }
 
-.indicator.active {
-  background: #ff6200; /* your brand orange */
-}
+/* ===================================
+   7. Tablet & Desktop Enhancements (min-width: 769px)
+   =================================== */
+@media (min-width: 769px) {
+  /* Switch to horizontal scrolling layout */
+  .container {
+    flex-direction: row;
+    height: 100vh;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+  }
 
-/* Mobile: convert to dividers */
-@media (max-width: 768px) {
+  .panel {
+    min-width: 100vw;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 0 60px;
+    min-height: 100vh;
+  }
+
+  /* Fixed hero logo overlay on desktop */
+  .hero-logo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    max-width: 80vw;
+    max-height: 80vh;
+    pointer-events: none;
+  }
+
+  /* Content panels above hero logo */
+  .panel:not(.hero) {
+    z-index: 10;
+    background: #ffffff;
+  }
+
+  /* Show navigation arrows */
+  .nav-arrow {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    z-index: 1100;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+  }
+
+  .nav-arrow:hover,
+  .nav-arrow:focus {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .nav-arrow--left {
+    left: 20px;
+  }
+  .nav-arrow--right {
+    right: 20px;
+  }
+
+  .nav-arrow--hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .nav-arrow svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+  }
+
+  /* Show page indicators */
   .page-indicators {
-    position: static;
-    transform: none;
-    flex-direction: column;
-    gap: 0;
-    width: 100%;
+    display: flex;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 12px;
+    z-index: 1200;
+    pointer-events: none;
   }
 
   .indicator {
-    width: 100%;
-    height: 1px;
-    background: #dddddd;
-    border-radius: 0;
+    width: 50px;
+    height: 5px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    transition: background 0.4s ease;
   }
 
   .indicator.active {
-    background: #dddddd;
+    background: #ff6200; /* Brand orange */
   }
 
+  /* Remove mobile dividers */
   .panel:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 20px;
-    right: 20px;
-    height: 1px;
-    background: #dddddd;
-  }
-}
-
-/* ===================================
-   8. Scrollbar Hiding
-   =================================== */
-.container::-webkit-scrollbar {
-  display: none;
-}
-.container {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* ===================================
-   9. Mobile
-   =================================== */
-@media (max-width: 768px) {
-  body,
-  html {
-    overflow-x: hidden;
-  }
-  .hero-logo {
-    position: static; /* Or 'relative' if you need minor adjustments */
-    transform: none; /* Removes the centering translate */
-    max-width: 90vw; /* Optional: make it larger/fuller on mobile */
-    margin: 0 auto; /* Optional: center it horizontally within the hero panel */
-    padding-top: 20vh;
-    padding-bottom: 15vh;
-    /* Add top/bottom margin or padding if needed for spacing */
-  }
-  .container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    scroll-snap-type: none;
-    -webkit-overflow-scrolling: touch; /* Smoother momentum on iOS */
-  }
-  .panel {
-    min-height: auto;
-    max-height: fit-content;
-    flex-direction: column;
-    touch-action: pan-y; /* Allow vertical pinch-zoom if needed */
+    display: none;
   }
 }
