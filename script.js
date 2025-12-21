@@ -9,7 +9,7 @@ const indicators = document.querySelectorAll(".indicator");
 // 1. Home Button – Return to Hero
 // ===================================
 homeButton.addEventListener("click", () => {
-  container.scrollTo({ left: 0, behavior: "smooth" });
+  container.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   updateUI();
 });
 
