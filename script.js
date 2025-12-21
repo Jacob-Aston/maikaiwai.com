@@ -19,3 +19,20 @@ document.getElementById("prev-button").addEventListener("click", () => {
 document.getElementById("next-button").addEventListener("click", () => {
   container.scrollBy({ left: window.innerWidth, behavior: "smooth" });
 });
+
+// Page indicator highlight (desktop only)
+const indicators = document.querySelectorAll(".indicator");
+
+function updateIndicators() {
+  const scrollIndex = Math.round(container.scrollLeft / window.innerWidth);
+  indicators.forEach((ind, i) => {
+    ind.classList.toggle("active", i === scrollIndex);
+  });
+}
+
+// Initial + on scroll
+updateIndicators();
+container.addEventListener("scroll", updateIndicators);
+
+// Also update on resize (for orientation changes)
+window.addEventListener("resize", updateIndicators);
