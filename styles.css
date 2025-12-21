@@ -217,6 +217,19 @@ body {
    9. Mobile
    =================================== */
 @media (max-width: 768px) {
+  body,
+  html {
+    overflow-x: hidden;
+  }
+  .hero-logo {
+    position: static; /* Or 'relative' if you need minor adjustments */
+    transform: none; /* Removes the centering translate */
+    max-width: 90vw; /* Optional: make it larger/fuller on mobile */
+    margin: 0 auto; /* Optional: center it horizontally within the hero panel */
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+    /* Add top/bottom margin or padding if needed for spacing */
+  }
   .container {
     display: flex;
     flex-direction: column;
@@ -225,15 +238,11 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
     scroll-snap-type: none;
+    -webkit-overflow-scrolling: touch; /* Smoother momentum on iOS */
   }
   .panel {
-    width: 100%; /* Full width of viewport */
-    min-height: 100vh; /* Optional: each panel full screen height */
-    flex-shrink: 0; /* Still useful to prevent shrinking */
-    scroll-snap-align: none;
-  }
-  .panel:not(.hero) {
     min-height: auto;
     max-height: fit-content;
+    touch-action: pan-y; /* Allow vertical pinch-zoom if needed */
   }
 }
