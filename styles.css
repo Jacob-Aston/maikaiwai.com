@@ -226,4 +226,14 @@ body {
     overflow-y: scroll;
     scroll-snap-type: none;
   }
+  .panel {
+    width: 100%; /* Full width of viewport */
+    min-height: 100vh; /* Optional: each panel full screen height */
+    flex-shrink: 0; /* Still useful to prevent shrinking */
+    scroll-snap-align: none;
+  }
+  .panel:not(.hero) {
+    min-height: auto;
+    max-height: fit-content;
+  }
 }
