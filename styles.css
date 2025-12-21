@@ -243,6 +243,7 @@ body {
   .panel {
     min-height: auto;
     max-height: fit-content;
+    flex-direction: column;
     touch-action: pan-y; /* Allow vertical pinch-zoom if needed */
   }
 }
