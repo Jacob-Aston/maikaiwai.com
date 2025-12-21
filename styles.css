@@ -65,3 +65,30 @@ body {
   scrollbar-width: none;
 }
   */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; /* adjust if you want taller/shorter */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* stays on top of everything */
+  pointer-events: none; /* allows scrolling through empty areas */
+  background: rgba(255, 255, 255, 0.1); /* optional subtle blur/frosted look */
+  backdrop-filter: blur(10px); /* modern glass effect - optional */
+}
+
+.nav-logo {
+  width: 50px; /* adjust size to match your favicon */
+  height: 50px;
+  cursor: pointer;
+  pointer-events: auto; /* makes only the logo clickable */
+  transition: transform 0.2s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.1);
+}
