@@ -227,7 +227,7 @@ body {
     max-width: 90vw; /* Optional: make it larger/fuller on mobile */
     margin: 0 auto; /* Optional: center it horizontally within the hero panel */
     padding-top: 20vh;
-    padding-bottom: 20vh;
+    padding-bottom: 15vh;
     /* Add top/bottom margin or padding if needed for spacing */
   }
   .container {
