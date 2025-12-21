@@ -212,3 +212,18 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ===================================
+   9. Mobile
+   =================================== */
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-snap-type: none;
+  }
+}
