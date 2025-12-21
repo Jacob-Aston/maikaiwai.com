@@ -1,13 +1,67 @@
-body,
-html {
+html,
+body {
   margin: 0;
+  padding: 0;
   height: 100%;
-  background: white;
+  overflow: hidden; /* prevents vertical scroll bars */
+  font-family: system-ui, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 100vh;
+  scroll-snap-type: x mandatory; /* the magic snap */
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.panel {
+  width: 100vw;
+  height: 100vh;
+  min-width: 0; /* ADD THIS LINE */
+  flex-shrink: 0;
+  scroll-snap-align: start;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-img {
-  max-width: 90%;
-  max-height: 90vh;
+
+.panel:nth-child(1) {
+  background: #ff0000;
+} /* red */
+.panel:nth-child(2) {
+  background: #00ff00;
+} /* green */
+.panel:nth-child(3) {
+  background: #0000ff;
+} /* blue */
+.panel:nth-child(4) {
+  background: #ffff00;
+} /* yellow */
+
+/* Hero specific */
+.hero {
+  position: relative;
+  background: #ffffff; /* or whatever your hero bg is */
 }
+
+.hero-logo {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+/* Temporary: hide scrollbar for cleaner look (optional) */
+/*
+.container::-webkit-scrollbar {
+  display: none;
+}
+  */
+/*
+.container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+  */
