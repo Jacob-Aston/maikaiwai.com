@@ -1,26 +1,35 @@
+/* ===================================
+   1. Global Reset & Base
+   =================================== */
 html,
 body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* prevents vertical scroll bars */
-  font-family: system-ui, sans-serif;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
+/* ===================================
+   2. Horizontal Scrolling Container
+   =================================== */
 .container {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   height: 100vh;
-  scroll-snap-type: x mandatory; /* the magic snap */
   overflow-x: scroll;
   overflow-y: hidden;
+  scroll-snap-type: x mandatory;
 }
 
+/* ===================================
+   3. Panels (Slides)
+   =================================== */
 .panel {
   width: 100vw;
   height: 100vh;
-  min-width: 0; /* ADD THIS LINE */
+  min-width: 0;
   flex-shrink: 0;
   scroll-snap-align: start;
   display: flex;
@@ -28,67 +37,71 @@ body {
   justify-content: center;
 }
 
-.panel:nth-child(1) {
-  background: #ff0000;
-} /* red */
-.panel:nth-child(2) {
-  background: #00ff00;
-} /* green */
-.panel:nth-child(3) {
-  background: #0000ff;
-} /* blue */
-.panel:nth-child(4) {
-  background: #ffff00;
-} /* yellow */
-
-/* Hero specific */
+/* Hero panel — lowest layer */
 .hero {
   position: relative;
-  background: #ffffff; /* or whatever your hero bg is */
+  z-index: 1;
+  background: #ffffff; /* Change this to your desired hero background */
 }
 
+/* All content panels — cover the hero/logo */
+.panel:not(.hero) {
+  z-index: 10;
+  background: #ffffff; /* Your main content background */
+}
+
+/* ===================================
+   4. Fixed Hero Logo (covered by scrolling panels)
+   =================================== */
 .hero-logo {
-  max-width: 80%;
-  max-height: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5; /* Above hero (1), below content panels (10) */
+  max-width: 80vw;
+  max-height: 80vh;
   object-fit: contain;
+  pointer-events: none;
 }
 
-/* Temporary: hide scrollbar for cleaner look (optional) */
-/*
-.container::-webkit-scrollbar {
-  display: none;
-}
-  */
-/*
-.container {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-  */
-
+/* ===================================
+   5. Navbar (always on top)
+   =================================== */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 80px; /* adjust if you want taller/shorter */
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000; /* stays on top of everything */
-  pointer-events: none; /* allows scrolling through empty areas */
-  background: rgba(255, 255, 255, 0.1); /* optional subtle blur/frosted look */
-  backdrop-filter: blur(10px); /* modern glass effect - optional */
+  z-index: 1000;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .nav-logo {
-  width: 50px; /* adjust size to match your favicon */
+  width: 50px;
   height: 50px;
   cursor: pointer;
-  pointer-events: auto; /* makes only the logo clickable */
+  pointer-events: auto;
   transition: transform 0.2s ease;
 }
 
 .nav-logo:hover {
   transform: scale(1.1);
+}
+
+/* ===================================
+   6. Scrollbar (optional clean look)
+   =================================== */
+.container::-webkit-scrollbar {
+  display: none;
+}
+.container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
