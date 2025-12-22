@@ -182,8 +182,7 @@ body {
     transition: all 0.3s ease;
   }
 
-  .nav-arrow:hover,
-  .nav-arrow:focus {
+  .nav-arrow:hover {
     opacity: 1;
     background: rgba(0, 0, 0, 0.6);
   }
