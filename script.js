@@ -80,5 +80,58 @@ window.addEventListener("resize", () => {
   }
 });
 
+// Horizontal mouse wheel/trackpad scrolling on desktop – smart & smooth
+let isScrolling = false;
+
+container.addEventListener("wheel", (e) => {
+  if (!isHorizontalMode()) return;
+
+  // Only handle vertical scrolling (most common on trackpads and wheels)
+  if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+
+  e.preventDefault();
+
+  // If already animating to a panel, ignore new events until done
+  if (isScrolling) return;
+
+  const direction = e.deltaY > 0 ? 1 : -1;
+  const currentScroll = container.scrollLeft;
+  const pageWidth = window.innerWidth;
+  const currentIndex = Math.round(currentScroll / pageWidth);
+
+  // Calculate target panel
+  let targetIndex = currentIndex + direction;
+
+  // Clamp to bounds
+  const maxIndex = document.querySelectorAll(".panel").length - 1;
+  targetIndex = Math.max(0, Math.min(targetIndex, maxIndex));
+
+  // Only proceed if we're actually moving to a different panel
+  if (targetIndex === currentIndex) return;
+
+  // Mark as scrolling and perform smooth scroll
+  isScrolling = true;
+
+  container.scrollTo({
+    left: targetIndex * pageWidth,
+    behavior: "smooth",
+  });
+
+  // Clear flag after animation completes (~600–800ms for smooth scroll)
+  // Use a longer timeout to be safe across devices
+  setTimeout(() => {
+    isScrolling = false;
+  }, 900);
+
+  // Update UI during scroll for responsive feedback
+  const checkScroll = () => {
+    updateUI();
+    if (Math.abs(container.scrollLeft - targetIndex * pageWidth) > 1) {
+      requestAnimationFrame(checkScroll);
+    }
+  };
+  requestAnimationFrame(checkScroll);
+});
+
 // Initial update
 updateUI();
