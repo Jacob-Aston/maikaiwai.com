@@ -42,6 +42,27 @@ nextButton.addEventListener("click", () => {
   }
 });
 
+// Make page indicators clickable for direct navigation
+indicators.forEach((indicator, index) => {
+  indicator.addEventListener("click", () => {
+    if (!isHorizontalMode()) return;
+
+    container.scrollTo({
+      left: index * window.innerWidth,
+      behavior: "smooth",
+    });
+
+    // Update UI immediately
+    requestAnimationFrame(updateUI);
+  });
+
+  // Improve accessibility and hover feedback
+  indicator.style.cursor = "pointer";
+  indicator.setAttribute("role", "button");
+  indicator.setAttribute("tabindex", "0");
+  indicator.setAttribute("aria-label", `Go to section ${index + 1}`);
+});
+
 // Update indicators and arrow states
 function updateUI() {
   const horizontal = isHorizontalMode();

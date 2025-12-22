@@ -217,7 +217,7 @@ body {
     transform: translateX(-50%);
     gap: 12px;
     z-index: 1200;
-    pointer-events: none;
+    pointer-events: auto;
   }
 
   .indicator {
@@ -225,7 +225,14 @@ body {
     height: 5px;
     background: rgba(0, 0, 0, 0.3);
     border-radius: 3px;
-    transition: background 0.4s ease;
+    cursor: pointer;
+    transition: background 0.4s ease, transform 0.2s ease;
+  }
+
+  .indicator:hover,
+  .indicator:focus {
+    transform: scale(1.2);
+    background: #ff6200 !important; /* Show intent even on non-active */
   }
 
   .indicator.active {
