@@ -1,16 +1,27 @@
-// Main elements
+/* ===================================
+   script.js – Maikaʻi Wai LLC Horizontal/Vertical Site
+   Professional, mobile-first scrolling experience
+   =================================== */
+
+// ===================================
+// 1. Core Element References
+// ===================================
 const container = document.querySelector(".container");
 const homeButton = document.getElementById("home-button");
 const prevButton = document.getElementById("prev-button");
 const nextButton = document.getElementById("next-button");
 const indicators = document.querySelectorAll(".indicator");
 
-// Determine layout mode
+// ===================================
+// 2. Utility: Detect Layout Mode
+// ===================================
 function isHorizontalMode() {
-  return window.innerWidth >= 769;
+  return window.innerWidth >= 769; // Matches CSS breakpoint
 }
 
-// Scroll to specific panel index
+// ===================================
+// 3. Smooth Scroll to Specific Panel (Used by multiple features)
+// ===================================
 function scrollToPanel(index) {
   if (isHorizontalMode()) {
     container.scrollTo({
@@ -18,31 +29,39 @@ function scrollToPanel(index) {
       behavior: "smooth",
     });
   } else {
-    const panels = document.querySelectorAll(".panel");
-    panels[index]?.scrollIntoView({ behavior: "smooth" });
+    // Mobile: vertical smooth scroll to panel
+    document
+      .querySelectorAll(".panel")
+      [index]?.scrollIntoView({ behavior: "smooth" });
   }
 }
 
-// Home button – always go to first panel
+// ===================================
+// 4. Navigation Controls
+// ===================================
+
+// Home button – return to hero section
 homeButton.addEventListener("click", () => {
   scrollToPanel(0);
   updateUI();
 });
 
-// Arrow navigation (desktop only)
+// Desktop arrow buttons – previous/next panel
 prevButton.addEventListener("click", () => {
   if (isHorizontalMode()) {
     container.scrollBy({ left: -window.innerWidth, behavior: "smooth" });
+    updateUI();
   }
 });
 
 nextButton.addEventListener("click", () => {
   if (isHorizontalMode()) {
     container.scrollBy({ left: window.innerWidth, behavior: "smooth" });
+    updateUI();
   }
 });
 
-// Make page indicators clickable for direct navigation
+// Clickable page indicators – direct panel navigation
 indicators.forEach((indicator, index) => {
   indicator.addEventListener("click", () => {
     if (!isHorizontalMode()) return;
@@ -51,29 +70,31 @@ indicators.forEach((indicator, index) => {
       left: index * window.innerWidth,
       behavior: "smooth",
     });
-
-    // Update UI immediately
     requestAnimationFrame(updateUI);
   });
 
-  // Improve accessibility and hover feedback
+  // Accessibility & UX enhancements
   indicator.style.cursor = "pointer";
   indicator.setAttribute("role", "button");
   indicator.setAttribute("tabindex", "0");
   indicator.setAttribute("aria-label", `Go to section ${index + 1}`);
 });
 
-// Update indicators and arrow states
+// ===================================
+// 5. UI Updates: Indicators & Arrow Visibility
+// ===================================
 function updateUI() {
   const horizontal = isHorizontalMode();
 
   if (horizontal) {
     const scrollIndex = Math.round(container.scrollLeft / window.innerWidth);
 
+    // Update active indicator
     indicators.forEach((ind, i) => {
       ind.classList.toggle("active", i === scrollIndex);
     });
 
+    // Hide arrows at boundaries
     const scrollLeft = container.scrollLeft;
     const maxScroll = container.scrollWidth - container.clientWidth;
     const threshold = 50;
@@ -84,113 +105,109 @@ function updateUI() {
       scrollLeft >= maxScroll - threshold
     );
   } else {
-    // Mobile: hide arrows and deactivate all indicators
+    // Mobile: ensure arrows are hidden and indicators inactive
     prevButton.classList.add("nav-arrow--hidden");
     nextButton.classList.add("nav-arrow--hidden");
     indicators.forEach((ind) => ind.classList.remove("active"));
   }
 }
 
-// Event listeners
-container.addEventListener("scroll", updateUI);
-window.addEventListener("resize", () => {
-  updateUI();
-  // Reset scroll position on orientation/layout change
-  if (!isHorizontalMode()) {
-    container.scrollTop = 0;
-  }
-});
-
-// Horizontal mouse wheel/trackpad scrolling on desktop – smart & smooth
-let isScrolling = false;
+// ===================================
+// 6. Mouse Wheel & Trackpad Scrolling (Desktop Only)
+// ===================================
+let isScrolling = false; // Prevents animation queueing during smooth scroll
 
 container.addEventListener("wheel", (e) => {
   if (!isHorizontalMode()) return;
 
-  // Only handle vertical scrolling (most common on trackpads and wheels)
-  if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+  // PRIORITY: Horizontal two-finger swipes (left/right) → let browser handle natively
+  // This gives natural momentum and allows fast multi-panel swipes
+  if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+    return; // Do not preventDefault → enables native inertia
+  }
 
-  e.preventDefault();
+  // Vertical wheel or up/down trackpad gestures → step one panel at a time
+  if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+    e.preventDefault(); // Block vertical page bounce
 
-  // If already animating to a panel, ignore new events until done
-  if (isScrolling) return;
+    if (isScrolling) return; // Avoid interfering with ongoing animation
 
-  const direction = e.deltaY > 0 ? 1 : -1;
-  const currentScroll = container.scrollLeft;
-  const pageWidth = window.innerWidth;
-  const currentIndex = Math.round(currentScroll / pageWidth);
+    const direction = e.deltaY > 0 ? 1 : -1;
+    const currentIndex = Math.round(container.scrollLeft / window.innerWidth);
+    let targetIndex = currentIndex + direction;
 
-  // Calculate target panel
-  let targetIndex = currentIndex + direction;
+    const maxIndex = document.querySelectorAll(".panel").length - 1;
+    targetIndex = Math.max(0, Math.min(targetIndex, maxIndex));
 
-  // Clamp to bounds
-  const maxIndex = document.querySelectorAll(".panel").length - 1;
-  targetIndex = Math.max(0, Math.min(targetIndex, maxIndex));
+    if (targetIndex === currentIndex) return;
 
-  // Only proceed if we're actually moving to a different panel
-  if (targetIndex === currentIndex) return;
+    isScrolling = true;
 
-  // Mark as scrolling and perform smooth scroll
-  isScrolling = true;
+    container.scrollTo({
+      left: targetIndex * window.innerWidth,
+      behavior: "smooth",
+    });
 
-  container.scrollTo({
-    left: targetIndex * pageWidth,
-    behavior: "smooth",
-  });
+    // Reset lock after animation
+    setTimeout(() => {
+      isScrolling = false;
+    }, 900);
 
-  // Clear flag after animation completes (~600–800ms for smooth scroll)
-  // Use a longer timeout to be safe across devices
-  setTimeout(() => {
-    isScrolling = false;
-  }, 900);
-
-  // Update UI during scroll for responsive feedback
-  const checkScroll = () => {
-    updateUI();
-    if (Math.abs(container.scrollLeft - targetIndex * pageWidth) > 1) {
-      requestAnimationFrame(checkScroll);
-    }
-  };
-  requestAnimationFrame(checkScroll);
+    // Keep UI responsive during scroll
+    const syncUI = () => {
+      updateUI();
+      if (
+        Math.abs(container.scrollLeft - targetIndex * window.innerWidth) > 1
+      ) {
+        requestAnimationFrame(syncUI);
+      }
+    };
+    requestAnimationFrame(syncUI);
+  }
 });
 
-// Initial update
-updateUI();
+// ===================================
+// 7. Focus Management – Professional Smooth Scrolling Reliability
+// ===================================
 
-// Ensure immediate arrow/wheel functionality on desktop without needing a prior click
-if (isHorizontalMode()) {
-  // Give the container focus (but without visible outline)
-  container.setAttribute("tabindex", "-1"); // Makes it focusable
-  container.focus({ preventScroll: true });
-
-  // Optional: Remove focus outline for cleaner look, but keep accessibility
-  container.style.outline = "none";
+// Make container focusable (required for consistent smooth programmatic scrolling)
+function enableContainerFocus() {
+  if (isHorizontalMode()) {
+    container.setAttribute("tabindex", "-1"); // Focusable but not in tab order
+    container.style.outline = "none"; // Clean visual appearance
+    container.focus({ preventScroll: true });
+  }
 }
 
-// Re-apply on resize (e.g., if user resizes to desktop after loading on mobile)
-window.addEventListener("resize", () => {
-  if (isHorizontalMode()) {
-    container.setAttribute("tabindex", "-1");
-    container.focus({ preventScroll: true });
-    container.style.outline = "none";
-  }
-  updateUI();
-});
-
-// Keep the container focused on desktop after any navigation clicks
+// Maintain focus after navigation clicks (prevents "dead" arrows/wheel after button use)
 function maintainContainerFocus() {
   if (isHorizontalMode()) {
     container.focus({ preventScroll: true });
   }
 }
 
-// Run after every navigation action
-homeButton.addEventListener("click", maintainContainerFocus);
+// Apply on load and resize
+enableContainerFocus();
+window.addEventListener("resize", () => {
+  enableContainerFocus();
+  updateUI();
 
+  // Reset mobile scroll on orientation change
+  if (!isHorizontalMode()) {
+    container.scrollTop = 0;
+  }
+});
+
+// Re-focus container after any navigation interaction
+homeButton.addEventListener("click", maintainContainerFocus);
 prevButton.addEventListener("click", maintainContainerFocus);
 nextButton.addEventListener("click", maintainContainerFocus);
+indicators.forEach((ind) =>
+  ind.addEventListener("click", maintainContainerFocus)
+);
 
-// If you have clickable indicators (which you do)
-indicators.forEach((indicator) => {
-  indicator.addEventListener("click", maintainContainerFocus);
-});
+// ===================================
+// 8. Core Event Listeners & Initialization
+// ===================================
+container.addEventListener("scroll", updateUI);
+updateUI(); // Initial state on page load
