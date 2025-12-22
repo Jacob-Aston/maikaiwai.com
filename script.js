@@ -156,3 +156,41 @@ container.addEventListener("wheel", (e) => {
 
 // Initial update
 updateUI();
+
+// Ensure immediate arrow/wheel functionality on desktop without needing a prior click
+if (isHorizontalMode()) {
+  // Give the container focus (but without visible outline)
+  container.setAttribute("tabindex", "-1"); // Makes it focusable
+  container.focus({ preventScroll: true });
+
+  // Optional: Remove focus outline for cleaner look, but keep accessibility
+  container.style.outline = "none";
+}
+
+// Re-apply on resize (e.g., if user resizes to desktop after loading on mobile)
+window.addEventListener("resize", () => {
+  if (isHorizontalMode()) {
+    container.setAttribute("tabindex", "-1");
+    container.focus({ preventScroll: true });
+    container.style.outline = "none";
+  }
+  updateUI();
+});
+
+// Keep the container focused on desktop after any navigation clicks
+function maintainContainerFocus() {
+  if (isHorizontalMode()) {
+    container.focus({ preventScroll: true });
+  }
+}
+
+// Run after every navigation action
+homeButton.addEventListener("click", maintainContainerFocus);
+
+prevButton.addEventListener("click", maintainContainerFocus);
+nextButton.addEventListener("click", maintainContainerFocus);
+
+// If you have clickable indicators (which you do)
+indicators.forEach((indicator) => {
+  indicator.addEventListener("click", maintainContainerFocus);
+});
