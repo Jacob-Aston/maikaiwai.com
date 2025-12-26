@@ -126,6 +126,30 @@ body {
   background: #dddddd;
 }
 
+/* Base bilingual styling – compressed and paragraph-like */
+.bilingual {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.bilingual dt {
+  font-size: 1.3rem; /* Clear and prominent ʻŌlelo */
+  font-weight: bold;
+  line-height: 1; /* Tighter than before – feels more paragraph-like */
+  margin-bottom: 0.3rem; /* Minimal space below ʻŌlelo line */
+  color: #1a1a1a;
+}
+
+.bilingual dd {
+  font-size: 0.95rem; /* Small, subtle "fine print" English */
+  line-height: 1.3; /* Tight for compactness */
+  margin-left: 1.8rem; /* Gentle indent to nest under ʻŌlelo */
+  margin-bottom: 1rem; /* Space after translation before next ʻŌlelo line */
+  color: #666; /* Lighter gray */
+  font-style: normal; /* Removed italic for cleaner look – optional */
+}
+
 /* ===================================
    7. Tablet & Desktop Enhancements (min-width: 769px)
    =================================== */
@@ -243,4 +267,42 @@ body {
   .panel:not(:last-child)::after {
     display: none;
   }
+}
+
+/* Desktop: Two-column textbook layout */
+@media (min-width: 1024px) {
+  .bilingual {
+    column-count: 2;
+    column-gap: 3.5rem; /* Slightly narrower gutter */
+    column-rule: 1px solid #eee; /* Very subtle divider */
+    column-fill: balance;
+  }
+
+  .bilingual dt,
+  .bilingual dd {
+    break-inside: avoid; /* Keeps ʻŌlelo + translation pair together */
+    margin-left: 0; /* No indent in columns for tighter flow */
+  }
+
+  .bilingual dd {
+    margin-bottom: 0.8rem; /* Even tighter in columns */
+  }
+}
+
+/* Style switch – English emphasis (larger English, smaller ʻŌlelo) */
+body.english-emphasis .bilingual dt {
+  font-size: 0.95rem;
+  font-weight: normal;
+  color: #666;
+  line-height: 1.3;
+  margin-bottom: 0.3rem;
+}
+
+body.english-emphasis .bilingual dd {
+  font-size: 1.45rem;
+  font-weight: bold;
+  color: #1a1a1a;
+  line-height: 1.4;
+  margin-left: 1.8rem;
+  margin-bottom: 1rem;
 }
