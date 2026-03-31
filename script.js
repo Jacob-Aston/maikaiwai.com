@@ -211,3 +211,57 @@ indicators.forEach((ind) =>
 // ===================================
 container.addEventListener("scroll", updateUI);
 updateUI(); // Initial state on page load
+
+// ===================================
+// 9. Keyboard Navigation (Left/Right + Up/Down)
+// ===================================
+
+document.addEventListener("keydown", (e) => {
+  // Only handle keyboard navigation in horizontal (desktop) mode
+  if (!isHorizontalMode()) return;
+
+  // Ignore if user is typing in an input/textarea
+  if (
+    ["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement.tagName)
+  ) {
+    return;
+  }
+
+  const currentIndex = Math.round(container.scrollLeft / window.innerWidth);
+  const maxIndex = document.querySelectorAll(".panel").length - 1;
+  let targetIndex = currentIndex;
+
+  switch (e.key) {
+    case "ArrowLeft":
+    case "ArrowUp": // ← Up also goes to previous panel
+      targetIndex = currentIndex - 1;
+      break;
+
+    case "ArrowRight":
+    case "ArrowDown": // ← Down also goes to next panel
+      targetIndex = currentIndex + 1;
+      break;
+
+    default:
+      return; // Not an arrow key we care about
+  }
+
+  // Clamp to valid range
+  targetIndex = Math.max(0, Math.min(targetIndex, maxIndex));
+
+  // Only scroll if index actually changed
+  if (targetIndex !== currentIndex) {
+    e.preventDefault(); // Prevent default browser scroll behavior
+
+    container.scrollTo({
+      left: targetIndex * window.innerWidth,
+      behavior: "smooth",
+    });
+
+    // Update UI immediately and keep it in sync
+    requestAnimationFrame(() => {
+      updateUI();
+      maintainContainerFocus();
+    });
+  }
+});
