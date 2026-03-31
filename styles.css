@@ -173,13 +173,8 @@ body {
 
   /* Fixed hero logo overlay on desktop */
   .hero-logo {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
-    max-width: 80vw;
-    max-height: 80vh;
+    max-width: 90vw;
+    max-height: 40vh;
     pointer-events: none;
   }
 
