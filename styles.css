@@ -171,17 +171,10 @@ body {
     min-height: 100vh;
   }
 
-  /* Fixed hero logo overlay on desktop */
   .hero-logo {
     max-width: 90vw;
     max-height: 40vh;
     pointer-events: none;
-  }
-
-  /* Content panels above hero logo */
-  .panel:not(.hero) {
-    z-index: 10;
-    background: #ffffff;
   }
 
   /* Show navigation arrows */
