@@ -167,8 +167,9 @@ body {
     min-width: 100vw;
     flex-shrink: 0;
     scroll-snap-align: start;
-    padding: 0 60px;
+    padding: 0 60px 80px;
     min-height: 100vh;
+    justify-content: end;
   }
 
   .hero-logo {
