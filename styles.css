@@ -203,7 +203,7 @@ body {
   }
 
   .panel-content {
-    height: 350px;
+    height: 25vh;
     border-top: black solid 2px;
   }
 
