@@ -15,7 +15,10 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
   overflow-x: hidden;
   background: #ffffff;
 }
@@ -268,7 +271,9 @@ body {
     background: rgba(0, 0, 0, 0.3);
     border-radius: 3px;
     cursor: pointer;
-    transition: background 0.4s ease, transform 0.2s ease;
+    transition:
+      background 0.4s ease,
+      transform 0.2s ease;
   }
 
   .indicator:hover,
