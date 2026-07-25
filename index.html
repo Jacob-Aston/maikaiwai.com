@@ -1,269 +1,378 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maikaʻi Wai – ʻAhahui o Māla Lanakila</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maikaʻi Wai – ʻAhahui o Māla Lanakila</title>
 
-  <!-- Favicon -->
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.65;
-      color: #222;
-      background: #faf9f6;
-      padding: 2rem 1rem 4rem;
-    }
-
-    .container {
-      max-width: 920px;
-      margin: 0 auto;
-    }
-
-    /* Inline Header */
-    .site-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-      text-align: left;
-    }
-
-    .logo {
-      width: 64px;
-      height: auto;
-      flex-shrink: 0;
-    }
-
-    .title-group h1 {
-      font-size: 1.8rem;
-      font-weight: 650;
-      margin-bottom: 0.1rem;
-      line-height: 1.2;
-    }
-
-    .title-group p {
-      color: #555;
-      font-size: 1rem;
-      margin: 0;
-    }
-
-    .hero-image {
-      width: 100%;
-      max-height: 420px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 3rem;
-      display: block;
-    }
-
-    .section-image {
-      width: 100%;
-      max-height: 320px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 1.5rem;
-      display: block;
-    }
-
-    section {
-      margin-bottom: 4rem;
-    }
-
-    h2 {
-      font-size: 1.45rem;
-      font-weight: 600;
-      margin-bottom: 1.4rem;
-    }
-
-    h2 span {
-      font-weight: 400;
-      color: #666;
-      font-size: 1rem;
-    }
-
-    .bilingual-pair {
-      display: grid;
-      gap: 0.35rem 2.2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .olelo {
-      font-weight: 500;
-    }
-
-    .english {
-      color: #444;
-    }
-
-    /* Footer */
-    footer {
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 1px solid #ddd;
-      text-align: center;
-      color: #666;
-      font-size: 0.95rem;
-    }
-
-    footer a {
-      color: #333;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    footer p {
-      margin-bottom: 0.4rem;
-    }
-
-    /* Desktop */
-    @media (min-width: 720px) {
-      .bilingual-pair {
-        grid-template-columns: 1fr 1fr;
-        align-items: start;
-      }
-    }
-
-    /* Mobile */
-    @media (max-width: 719px) {
-      .bilingual-pair {
-        grid-template-columns: 1fr;
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        line-height: 1.65;
+        color: #222;
+        background: #faf9f6;
+        padding: 2rem 1rem 4rem;
+      }
+
+      .container {
+        max-width: 920px;
+        margin: 0 auto;
+      }
+
+      /* Inline Header */
       .site-header {
-        gap: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+        text-align: center;
       }
 
       .logo {
-        width: 52px;
+        width: 90px; /* was 64px */
+        height: auto;
+        flex-shrink: 0;
       }
 
       .title-group h1 {
-        font-size: 1.45rem;
+        font-size: 1.8rem;
+        font-weight: 650;
+        margin-bottom: 0.1rem;
+        line-height: 1.2;
       }
 
       .title-group p {
-        font-size: 0.9rem;
+        font-size: 1.4rem;
+        font-weight: 650;
+        margin: 0;
       }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
 
-    <!-- Inline Header with Logo -->
-    <header class="site-header">
-      <img src="images/logo.png" alt="Maikaʻi Wai logo" class="logo">
-      <div class="title-group">
-        <h1>Maikaʻi Wai</h1>
-        <p>ʻAhahui o Māla Lanakila</p>
-      </div>
-    </header>
+      .hero-image {
+        width: 100%;
+        max-height: 420px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 3rem;
+        display: block;
+      }
 
-    <!-- Hero Image -->
-    <img src="images/logodiamondhead.jpg" alt="Maikaʻi Wai garden" class="hero-image">
+      .section-image {
+        width: 100%;
+        max-height: 320px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        display: block;
+      }
 
-    <!-- ===================== VISION ===================== -->
-    <section>
-      <img src="images/watering.jpg" alt="Vision - living homestead" class="section-image">
-      <h2>Ka ʻIke <span>(Vision)</span></h2>
+      section {
+        margin-bottom: 4rem;
+      }
 
-      <div class="bilingual-pair">
-        <p class="olelo">ʻO Maikaʻi Wai – ʻAhahui o Māla Lanakila ka ʻahahui e hoʻohui ana i ka poʻe nona ka ʻāina a me ka poʻe mahiʻai akamai ma lalo o ke aloha ʻāina.</p>
-        <p class="english">Maikaʻi Wai – Guilded Fellowship of Māla Lanakila brings landowners and skilled cultivators together in a guild grounded in aloha ʻāina.</p>
-      </div>
+      h2 {
+        font-size: 1.45rem;
+        font-weight: 600;
+        margin-bottom: 1.4rem;
+      }
 
-      <div class="bilingual-pair">
-        <p class="olelo">Inā lilo ʻoe i Hoa ʻāina, e hāʻawi ʻoe i ka ʻae no kou ʻāina, a e ʻike ʻoe i kona ulu ʻana i homestead Hawaiʻi e ola ana.</p>
-        <p class="english">As a Guild Member, you license your land and watch it become a living Hawaiian homestead.</p>
-      </div>
+      h2 span {
+        font-weight: 400;
+        color: #666;
+        font-size: 1rem;
+      }
 
-      <div class="bilingual-pair">
-        <p class="olelo">He māla lanakila e hua ai ka ʻai no kou papaʻaina, i hoʻonui ʻia me nā mea kanu ʻōiwi, ka lepo hoʻomomona, a me ka mālama kahiko.</p>
-        <p class="english">It is a productive garden that grows food for your table, enriched with native plants, lepo hoʻomomona, and traditional care.</p>
-      </div>
+      .bilingual-pair {
+        display: grid;
+        gap: 0.35rem 2.2rem;
+        margin-bottom: 1.5rem;
+      }
 
-      <div class="bilingual-pair">
-        <p class="olelo">ʻO nā Hoa hana, mai ka haumāna a hiki i ke alakaʻi, ka poʻe e hana lima ana me ke akamai ma ka mahiʻai, ka wai, a me nā hana moʻomeheu.</p>
-        <p class="english">Guild Fellows, from apprentices to leads, are the ones who do the hands-on work with skill in gardening, water systems, and cultural practices.</p>
-      </div>
+      .olelo {
+        font-weight: 500;
+      }
 
-      <div class="bilingual-pair">
-        <p class="olelo">Ma o ka Pūnaewele Kālepa a me ka Mākeke, hiki i nā Hoa ʻāina ke kālepa i nā waiwai, a hiki i ka lehulehu ke loaʻa nā mea i hana ʻia, e hoʻoikaika ana i ka hana noʻeau a me ka waiwai o ka ʻahahui.</p>
-        <p class="english">Through the Guild Trade Network and the Guild Market, Guild Members can trade goods, and the public can obtain processed materials, strengthening cultural craft and the guild’s resources.</p>
-      </div>
+      .english {
+        color: #444;
+      }
 
-      <div class="bilingual-pair">
-        <p class="olelo">He ʻahahui akamai kēia ma loko o ke ʻano ʻahahui kālepa, kahi e hui pū ai ka ʻāina, ka ʻike, a me ka nui i mea e ikaika ai ke kaiāulu a me ka ʻāina no nā mea a pau.</p>
-        <p class="english">This is a skilled fellowship within a merchant guild structure, where land, knowledge, and abundance come together to strengthen community and ʻāina for everyone.</p>
-      </div>
-    </section>
+      /* Footer */
+      footer {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid #ddd;
+        text-align: center;
+        color: #666;
+        font-size: 0.95rem;
+      }
 
-    <!-- ===================== MISSION ===================== -->
-    <section>
-      <img src="images/grassswales.jpg" alt="Mission - caring for the land" class="section-image">
-      <h2>Ke Kuleana <span>(Mission)</span></h2>
+      footer a {
+        color: #333;
+        text-decoration: none;
+      }
 
-      <div class="bilingual-pair">
-        <p class="olelo">Ma o ka ʻahahui o nā Hoa ʻāina a me nā Hoa hana akamai, e hoʻolālā, e kau, a e mālama mākou i nā māla lanakila i mea e ola ai ka lepo, e ulu ai ka ʻai, a e paʻa ai ka pilina o ke kaiāulu me ka ʻāina.</p>
-        <p class="english">Through a guild of land sponsors and skilled Fellows, we design, install, and care for victory gardens so the soil can live, food can grow, and the connection between community and ʻāina can be strengthened.</p>
-      </div>
-    </section>
+      footer a:hover {
+        text-decoration: underline;
+      }
 
-    <!-- ===================== OWNERSHIP ===================== -->
-    <section>
-      <img src="images/compost1.jpg" alt="Ownership - shared care of the land" class="section-image">
-      <h2>Pehea e Nonai ai <span>(How Ownership Works)</span></h2>
+      footer p {
+        margin-bottom: 0.4rem;
+      }
 
-      <div class="bilingual-pair">
-        <p class="olelo">No nā Hoa ʻāina ka nona piha o ko lākou ʻāina a me ke ʻano ola o ia ʻāina.</p>
-        <p class="english">Guild Members fully own their land and the living landscape.</p>
-      </div>
+      /* Desktop */
+      @media (min-width: 720px) {
+        .bilingual-pair {
+          grid-template-columns: 1fr 1fr;
+          align-items: start;
+        }
+      }
 
-      <div class="bilingual-pair">
-        <p class="olelo">No ka ʻAhahui nā mea i kau ʻia — nā ʻōnaehana wai, nā pahu kanu, nā hale ʻupena, nā ʻōnaehana lepo hoʻomomona, a me nā mea hana — i mālama pono ʻia, hoʻomaikaʻi ʻia, a kākoʻo ʻia e nā Hoa hana i ka wā lōʻihi.</p>
-        <p class="english">The Guild owns the infrastructure that is installed — irrigation systems, planter boxes, net houses, lepo hoʻomomona systems, and tools — so they can be properly cared for, improved, and supported by the Fellows over time.</p>
-      </div>
+      /* Mobile */
+      @media (max-width: 719px) {
+        .bilingual-pair {
+          grid-template-columns: 1fr;
+        }
 
-      <div class="bilingual-pair">
-        <p class="olelo">ʻO kēia ʻano like e pale ana i ka ʻāina o ka Hoa ʻāina a e ʻae ana i ka māla e ikaika aʻe ma lalo o ka mālama like.</p>
-        <p class="english">This shared way protects the Guild Member’s land while allowing the garden to grow stronger under collective care.</p>
-      </div>
+        .site-header {
+          gap: 0.75rem;
+        }
 
-      <div class="bilingual-pair">
-        <p class="olelo">Inā haʻalele ka Hoa ʻāina i ka ʻAhahui, nonai ʻo ia i kona ʻāina a me ke ʻano o ka ʻāina.</p>
-        <p class="english">If a Guild Member leaves the Guild, they keep their land and the living landscape.</p>
-      </div>
+        .logo {
+          width: 72px;
+        }
 
-      <div class="bilingual-pair">
-        <p class="olelo">Hiki ke kūʻai ʻia nā mea a ka ʻAhahui ma ke kumu kūʻai kūpono i emi iho, a i ʻole e wehe ʻia e ka ʻAhahui ke hiki.</p>
-        <p class="english">The Guild’s infrastructure may be purchased at a fair, reduced value, or removed by the Guild when practical.</p>
-      </div>
+        .title-group h1 {
+          font-size: 1.45rem;
+        }
 
-      <div class="bilingual-pair">
-        <p class="olelo">Aia nā koi ma ka ʻaelike lālā.</p>
-        <p class="english">The specific terms are in the membership agreement.</p>
-      </div>
-    </section>
+        .title-group p {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Inline Header with Logo -->
+      <header class="site-header">
+        <img src="images/logo.png" alt="Maikaʻi Wai logo" class="logo" />
+        <div class="title-group">
+          <h1>Maikaʻi Wai</h1>
+          <p>ʻAhahui o Māla Lanakila</p>
+        </div>
+      </header>
 
-    <!-- Footer -->
-    <footer>
-      <p>Maikaʻi Wai – ʻAhahui o Māla Lanakila</p>
-      <p><a href="https://instagram.com/yourusername" target="_blank">Instagram</a></p>
-    </footer>
+      <!-- Hero Image -->
+      <img
+        src="images/diamondhead.jpg"
+        alt="Maikaʻi Wai garden"
+        class="hero-image"
+      />
 
-  </div>
-</body>
+      <!-- ===================== VISION ===================== -->
+      <section>
+        <img
+          src="images/watering.jpg"
+          alt="Vision - living homestead"
+          class="section-image"
+        />
+        <h2>Ka ʻIke <span>(Vision)</span></h2>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            ʻO Maikaʻi Wai – ʻAhahui o Māla Lanakila ka ʻahahui e hoʻohui ana i
+            ka poʻe nona ka ʻāina a me ka poʻe mahiʻai akamai ma lalo o ke aloha
+            ʻāina.
+          </p>
+          <p class="english">
+            Maikaʻi Wai – Guilded Fellowship of Māla Lanakila brings landowners
+            and skilled cultivators together in a guild grounded in aloha ʻāina.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            Inā lilo ʻoe i Hoa ʻāina, e hāʻawi ʻoe i ka ʻae no kou ʻāina, a e
+            ʻike ʻoe i kona ulu ʻana i homestead Hawaiʻi e ola ana.
+          </p>
+          <p class="english">
+            As a Guild Member, you license your land and watch it become a
+            living Hawaiian homestead.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            He māla lanakila e hua ai ka ʻai no kou papaʻaina, i hoʻonui ʻia me
+            nā mea kanu ʻōiwi, ka lepo hoʻomomona, a me ka mālama kahiko.
+          </p>
+          <p class="english">
+            It is a productive garden that grows food for your table, enriched
+            with native plants, lepo hoʻomomona, and traditional care.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            ʻO nā Hoa hana, mai ka haumāna a hiki i ke alakaʻi, ka poʻe e hana
+            lima ana me ke akamai ma ka mahiʻai, ka wai, a me nā hana moʻomeheu.
+          </p>
+          <p class="english">
+            Guild Fellows, from apprentices to leads, are the ones who do the
+            hands-on work with skill in gardening, water systems, and cultural
+            practices.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            Ma o ka Pūnaewele Kālepa a me ka Mākeke, hiki i nā Hoa ʻāina ke
+            kālepa i nā waiwai, a hiki i ka lehulehu ke loaʻa nā mea i hana ʻia,
+            e hoʻoikaika ana i ka hana noʻeau a me ka waiwai o ka ʻahahui.
+          </p>
+          <p class="english">
+            Through the Guild Trade Network and the Guild Market, Guild Members
+            can trade goods, and the public can obtain processed materials,
+            strengthening cultural craft and the guild’s resources.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            He ʻahahui akamai kēia ma loko o ke ʻano ʻahahui kālepa, kahi e hui
+            pū ai ka ʻāina, ka ʻike, a me ka nui i mea e ikaika ai ke kaiāulu a
+            me ka ʻāina no nā mea a pau.
+          </p>
+          <p class="english">
+            This is a skilled fellowship within a merchant guild structure,
+            where land, knowledge, and abundance come together to strengthen
+            community and ʻāina for everyone.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== MISSION ===================== -->
+      <section>
+        <img
+          src="images/grassswales.jpg"
+          alt="Mission - caring for the land"
+          class="section-image"
+        />
+        <h2>Ke Kuleana <span>(Mission)</span></h2>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            Ma o ka ʻahahui o nā Hoa ʻāina a me nā Hoa hana akamai, e hoʻolālā,
+            e kau, a e mālama mākou i nā māla lanakila i mea e ola ai ka lepo, e
+            ulu ai ka ʻai, a e paʻa ai ka pilina o ke kaiāulu me ka ʻāina.
+          </p>
+          <p class="english">
+            Through a guild of land sponsors and skilled Fellows, we design,
+            install, and care for victory gardens so the soil can live, food can
+            grow, and the connection between community and ʻāina can be
+            strengthened.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== OWNERSHIP ===================== -->
+      <section>
+        <img
+          src="images/compost1.jpg"
+          alt="Ownership - shared care of the land"
+          class="section-image"
+        />
+        <h2>Pehea e Nonai ai <span>(How Ownership Works)</span></h2>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            No nā Hoa ʻāina ka nona piha o ko lākou ʻāina a me ke ʻano ola o ia
+            ʻāina.
+          </p>
+          <p class="english">
+            Guild Members fully own their land and the living landscape.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            No ka ʻAhahui nā mea i kau ʻia — nā ʻōnaehana wai, nā pahu kanu, nā
+            hale ʻupena, nā ʻōnaehana lepo hoʻomomona, a me nā mea hana — i
+            mālama pono ʻia, hoʻomaikaʻi ʻia, a kākoʻo ʻia e nā Hoa hana i ka wā
+            lōʻihi.
+          </p>
+          <p class="english">
+            The Guild owns the infrastructure that is installed — irrigation
+            systems, planter boxes, net houses, lepo hoʻomomona systems, and
+            tools — so they can be properly cared for, improved, and supported
+            by the Fellows over time.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            ʻO kēia ʻano like e pale ana i ka ʻāina o ka Hoa ʻāina a e ʻae ana i
+            ka māla e ikaika aʻe ma lalo o ka mālama like.
+          </p>
+          <p class="english">
+            This shared way protects the Guild Member’s land while allowing the
+            garden to grow stronger under collective care.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            Inā haʻalele ka Hoa ʻāina i ka ʻAhahui, nonai ʻo ia i kona ʻāina a
+            me ke ʻano o ka ʻāina.
+          </p>
+          <p class="english">
+            If a Guild Member leaves the Guild, they keep their land and the
+            living landscape.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            Hiki ke kūʻai ʻia nā mea a ka ʻAhahui ma ke kumu kūʻai kūpono i emi
+            iho, a i ʻole e wehe ʻia e ka ʻAhahui ke hiki.
+          </p>
+          <p class="english">
+            The Guild’s infrastructure may be purchased at a fair, reduced
+            value, or removed by the Guild when practical.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">Aia nā koi ma ka ʻaelike lālā.</p>
+          <p class="english">
+            The specific terms are in the membership agreement.
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <p>Maikaʻi Wai – ʻAhahui o Māla Lanakila</p>
+        <p>
+          <a href="https://instagram.com/yourusername" target="_blank"
+            >Instagram</a
+          >
+        </p>
+      </footer>
+    </div>
+  </body>
 </html>
