@@ -1,252 +1,269 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
-    <title>Maikaʻi Wai LLC | Smart Irrigation & Lighting | Oʻahu</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- Fixed Navbar -->
-    <nav class="navbar" aria-label="Main navigation">
-      <img
-        src="assets/favicon.png"
-        alt="Home - Maikaʻi Wai LLC"
-        class="nav-logo"
-        id="home-button"
-        role="button"
-        tabindex="0"
-      />
-    </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maikaʻi Wai – ʻAhahui o Māla Lanakila</title>
 
-    <!-- Desktop-only Navigation Arrows -->
-    <button
-      class="nav-arrow nav-arrow--left"
-      id="prev-button"
-      aria-label="Previous section"
-    >
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-      </svg>
-    </button>
-    <button
-      class="nav-arrow nav-arrow--right"
-      id="next-button"
-      aria-label="Next section"
-    >
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
-      </svg>
-    </button>
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
-    <!-- Main Content Container -->
-    <main class="container" id="main-container">
-      <!-- Hero Section -->
-      <section class="panel hero" id="hero" aria-labelledby="hero-title">
-        <div class="landscape-images">
-          <img
-          src="assets/grassswales.jpg"
-          alt="Landscape"
-          class="panel-image"
-          />
-          <img src="assets/logodiamondhead.jpg" alt="Landscape" class="panel-image" />
-        </div>
-        <!-- Optional: Add accessible heading if needed -->
-        <div class="panel-content">
-          <h1>Maikaʻi Wai LLC – He ʻoihana e kūkulu ana i nā māla lanakila.</h1>
-          <p>Maikaʻi Wai LLC – A business that builds victory gardens.</p>
-          <dl class="bilingual">
-            <dt>
-              He māla lanakila e ulu ana i ka meaʻai hou no ka ʻohana ma ka pā
-              hale ponoʻī.
-            </dt>
-            <dd>
-              A victory garden grows fresh food for the whole family right in
-              your own backyard.
-            </dd>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-            <dt>
-              E kūkulu mākou i nā pahu kiʻekiʻe, ʻauwai Hunter, pulu, a me ka
-              hale moa liʻiliʻi e mālama pono.
-            </dt>
-            <dd>
-              We build raised beds, Hunter irrigation, compost systems, and a
-              small chicken coop that cares for everything properly.
-            </dd>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      color: #222;
+      background: #faf9f6;
+      padding: 2rem 1rem 4rem;
+    }
 
-            <dt>
-              ʻO kēia ka māla e hoʻoikaika ana i ke ola maikaʻi a me ka mālama
-              ʻāina ma Oʻahu.
-            </dt>
-            <dd>
-              This is the garden that strengthens healthy living and caring for
-              the land here on Oahu.
-            </dd>
-          </dl>
-        </div>
-      </section>
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+    }
 
-      <!-- Section 2 -->
-      <section class="panel" aria-labelledby="section2-title">
-        <div class="landscape-images">
-          <img
-            src="assets/cropswales.jpg"
-            alt="Landscape"
-            class="panel-image"
-          />
-          <img
-            src="assets/grassswales.jpg"
-            alt="Landscape"
-            class="panel-image"
-          />
-        </div>
-        <div class="panel-content">
-          <h1 id="section2-title">Māla Lanakila</h1>
-          <p>Victory Garden</p>
-          <dl class="bilingual">
-            <dt>He māla lanakila e ulu ana i nā meaʻai hou no kou ʻohana.</dt>
-            <dd>A victory garden grows fresh food right for your family.</dd>
+    /* Inline Header */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      text-align: left;
+    }
 
-            <dt>
-              E kūkulu ʻia nā pahu kiʻekiʻe me ka lepo maikaʻi a me nā mea kanu
-              like ʻole.
-            </dt>
-            <dd>
-              Raised beds with rich soil and diverse plants are built just for
-              you.
-            </dd>
+    .logo {
+      width: 64px;
+      height: auto;
+      flex-shrink: 0;
+    }
 
-            <dt>
-              Hoʻohui ʻia nā mea kanu no ka ʻai olakino a me ke ola pono ma
-              Oʻahu.
-            </dt>
-            <dd>
-              Diverse crops come together for healthy eating and real wellness
-              here on Oahu.
-            </dd>
-          </dl>
-        </div>
-      </section>
+    .title-group h1 {
+      font-size: 1.8rem;
+      font-weight: 650;
+      margin-bottom: 0.1rem;
+      line-height: 1.2;
+    }
 
-      <!-- Section 3 -->
-      <section class="panel" aria-labelledby="section3-title">
-        <div class="landscape-images">
-          <img src="assets/compost1.jpg" alt="Landscape" class="panel-image" />
-          <img src="assets/compost2.jpg" alt="Landscape" class="panel-image" />
-        </div>
+    .title-group p {
+      color: #555;
+      font-size: 1rem;
+      margin: 0;
+    }
 
-        <div class="panel-content">
-          <h1 class="panel-title">Pulu</h1>
-          <p>Compost</p>
-          <dl class="bilingual">
-            <dt>
-              ʻO ka pulu e hoʻomomona ana i ka lepo me nā ʻōpala mālama ʻāina.
-            </dt>
-            <dd>
-              Compost enriches the soil using earth-caring scraps and waste.
-            </dd>
+    .hero-image {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 3rem;
+      display: block;
+    }
 
-            <dt>
-              E hana ʻia ka pulu ma ka home me nā lau a me nā koʻiʻula i kēlā me
-              kēia pule.
-            </dt>
-            <dd>
-              You make compost at home with leaves and kitchen scraps every
-              week.
-            </dd>
+    .section-image {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
 
-            <dt>
-              ʻO ka pulu ka mea e ulu ikaika ai kāu māla lanakila i nā makahiki.
-            </dt>
-            <dd>
-              Compost is what makes your victory garden grow strong for years to
-              come.
-            </dd>
-          </dl>
-        </div>
-      </section>
+    section {
+      margin-bottom: 4rem;
+    }
 
-      <!-- Section 5 -->
-      <section class="panel" aria-labelledby="section4-title">
-        <div class="landscape-images">
-          <img src="assets/kalo.jpg" alt="Landscape" class="panel-image" />
-          <img src="assets/watering.jpg" alt="Landscape" class="panel-image" />
-        </div>
-        <div class="panel-content">
-          <h1 id="section4-title">ʻAuwai</h1>
-          <p>Irrigation</p>
-          <dl class="bilingual">
-            <dt>
-              He ʻauwai akamai e mālama ana i ka wai no kāu māla lanakila.
-            </dt>
-            <dd>
-              Smart irrigation channels save water for your victory garden.
-            </dd>
+    h2 {
+      font-size: 1.45rem;
+      font-weight: 600;
+      margin-bottom: 1.4rem;
+    }
 
-            <dt>
-              Hoʻohana ʻia nā mea Hunter e hoʻolako i ka wai kūpono i kēlā me
-              kēia mea kanu.
-            </dt>
-            <dd>
-              Hunter-certified systems deliver the exact right amount of water
-              to every plant.
-            </dd>
+    h2 span {
+      font-weight: 400;
+      color: #666;
+      font-size: 1rem;
+    }
 
-            <dt>
-              E ulu maikaʻi nā mea kanu me ka wai ma ka ʻauwai hou a me ka
-              ʻenehana hou.
-            </dt>
-            <dd>
-              Plants thrive with efficient water from the new irrigation and
-              modern tech.
-            </dd>
-          </dl>
-        </div>
-      </section>
+    .bilingual-pair {
+      display: grid;
+      gap: 0.35rem 2.2rem;
+      margin-bottom: 1.5rem;
+    }
 
-      <!-- Footer Section -->
-      <section class="panel footer" aria-labelledby="footer-title">
-        <div class="landscape-images">
-          <img
-            src="assets/diamondhead.jpg"
-            alt="Landscape"
-            class="panel-image"
-          />
-          <img src="assets/sunset.jpg" alt="Landscape" class="panel-image" />
-        </div>
-        <div class="panel-content">
-          <h1 id="footer-title">E K&amacr;hea Mai</h1>
-          <p>Contact</p>
-          <dl class="bilingual">
-            <dt>Ua mākaukau ʻoe e aʻo hou a e hoʻoulu i kou ʻāina ponoʻī?</dt>
-            <dd>Ready to learn more and nurture your own land?</dd>
+    .olelo {
+      font-weight: 500;
+    }
 
-            <dt>
-              E kāhea mai no ke kūkākūkā manuahi— e hoʻomaka kākou i ka huakaʻi
-              mālama ʻāina me ke aloha.
-            </dt>
-            <dd>
-              Contact us for a free consultation— let's begin the journey of
-              caring for the land with aloha.
-            </dd>
+    .english {
+      color: #444;
+    }
 
-            <dt>* ʻAʻole loaʻa i kēia manawa.</dt>
-            <dd>* Currently unavailable.</dd>
-          </dl>
-        </div>
-      </section>
+    /* Footer */
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      color: #666;
+      font-size: 0.95rem;
+    }
 
-      <!-- Desktop: Page Indicators | Mobile: Hidden -->
-      <div class="page-indicators" role="status" aria-label="Page indicators">
-        <span class="indicator" data-index="0" aria-hidden="true"></span>
-        <span class="indicator" data-index="1" aria-hidden="true"></span>
-        <span class="indicator" data-index="2" aria-hidden="true"></span>
-        <span class="indicator" data-index="3" aria-hidden="true"></span>
-        <span class="indicator" data-index="4" aria-hidden="true"></span>
+    footer a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    footer p {
+      margin-bottom: 0.4rem;
+    }
+
+    /* Desktop */
+    @media (min-width: 720px) {
+      .bilingual-pair {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 719px) {
+      .bilingual-pair {
+        grid-template-columns: 1fr;
+      }
+
+      .site-header {
+        gap: 0.75rem;
+      }
+
+      .logo {
+        width: 52px;
+      }
+
+      .title-group h1 {
+        font-size: 1.45rem;
+      }
+
+      .title-group p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Inline Header with Logo -->
+    <header class="site-header">
+      <img src="images/logo.png" alt="Maikaʻi Wai logo" class="logo">
+      <div class="title-group">
+        <h1>Maikaʻi Wai</h1>
+        <p>ʻAhahui o Māla Lanakila</p>
       </div>
-    </main>
+    </header>
 
-    <script src="script.js"></script>
-  </body>
+    <!-- Hero Image -->
+    <img src="images/logodiamondhead.jpg" alt="Maikaʻi Wai garden" class="hero-image">
+
+    <!-- ===================== VISION ===================== -->
+    <section>
+      <img src="images/watering.jpg" alt="Vision - living homestead" class="section-image">
+      <h2>Ka ʻIke <span>(Vision)</span></h2>
+
+      <div class="bilingual-pair">
+        <p class="olelo">ʻO Maikaʻi Wai – ʻAhahui o Māla Lanakila ka ʻahahui e hoʻohui ana i ka poʻe nona ka ʻāina a me ka poʻe mahiʻai akamai ma lalo o ke aloha ʻāina.</p>
+        <p class="english">Maikaʻi Wai – Guilded Fellowship of Māla Lanakila brings landowners and skilled cultivators together in a guild grounded in aloha ʻāina.</p>
+      </div>
+
+      <div class="bilingual-pair">
+        <p class="olelo">Inā lilo ʻoe i Hoa ʻāina, e hāʻawi ʻoe i ka ʻae no kou ʻāina, a e ʻike ʻoe i kona ulu ʻana i homestead Hawaiʻi e ola ana.</p>
+        <p class="english">As a Guild Member, you license your land and watch it become a living Hawaiian homestead.</p>
+      </div>
+
+      <div class="bilingual-pair">
+        <p class="olelo">He māla lanakila e hua ai ka ʻai no kou papaʻaina, i hoʻonui ʻia me nā mea kanu ʻōiwi, ka lepo hoʻomomona, a me ka mālama kahiko.</p>
+        <p class="english">It is a productive garden that grows food for your table, enriched with native plants, lepo hoʻomomona, and traditional care.</p>
+      </div>
+
+      <div class="bilingual-pair">
+        <p class="olelo">ʻO nā Hoa hana, mai ka haumāna a hiki i ke alakaʻi, ka poʻe e hana lima ana me ke akamai ma ka mahiʻai, ka wai, a me nā hana moʻomeheu.</p>
+        <p class="english">Guild Fellows, from apprentices to leads, are the ones who do the hands-on work with skill in gardening, water systems, and cultural practices.</p>
+      </div>
+
+      <div class="bilingual-pair">
+        <p class="olelo">Ma o ka Pūnaewele Kālepa a me ka Mākeke, hiki i nā Hoa ʻāina ke kālepa i nā waiwai, a hiki i ka lehulehu ke loaʻa nā mea i hana ʻia, e hoʻoikaika ana i ka hana noʻeau a me ka waiwai o ka ʻahahui.</p>
+        <p class="english">Through the Guild Trade Network and the Guild Market, Guild Members can trade goods, and the public can obtain processed materials, strengthening cultural craft and the guild’s resources.</p>
+      </div>
+
+      <div class="bilingual-pair">
+        <p class="olelo">He ʻahahui akamai kēia ma loko o ke ʻano ʻahahui kālepa, kahi e hui pū ai ka ʻāina, ka ʻike, a me ka nui i mea e ikaika ai ke kaiāulu a me ka ʻāina no nā mea a pau.</p>
+        <p class="english">This is a skilled fellowship within a merchant guild structure, where land, knowledge, and abundance come together to strengthen community and ʻāina for everyone.</p>
+      </div>
+    </section>
+
+    <!-- ===================== MISSION ===================== -->
+    <section>
+      <img src="images/grassswales.jpg" alt="Mission - caring for the land" class="section-image">
+      <h2>Ke Kuleana <span>(Mission)</span></h2>
+
+      <div class="bilingual-pair">
+        <p class="olelo">Ma o ka ʻahahui o nā Hoa ʻāina a me nā Hoa hana akamai, e hoʻolālā, e kau, a e mālama mākou i nā māla lanakila i mea e ola ai ka lepo, e ulu ai ka ʻai, a e paʻa ai ka pilina o ke kaiāulu me ka ʻāina.</p>
+        <p class="english">Through a guild of land sponsors and skilled Fellows, we design, install, and care for victory gardens so the soil can live, food can grow, and the connection between community and ʻāina can be strengthened.</p>
+      </div>
+    </section>
+
+    <!-- ===================== OWNERSHIP ===================== -->
+    <section>
+      <img src="images/compost1.jpg" alt="Ownership - shared care of the land" class="section-image">
+      <h2>Pehea e Nonai ai <span>(How Ownership Works)</span></h2>
+
+      <div class="bilingual-pair">
+        <p class="olelo">No nā Hoa ʻāina ka nona piha o ko lākou ʻāina a me ke ʻano ola o ia ʻāina.</p>
+        <p class="english">Guild Members fully own their land and the living landscape.</p>
+      </div>
+
+      <div class="bilingual-pair">
+        <p class="olelo">No ka ʻAhahui nā mea i kau ʻia — nā ʻōnaehana wai, nā pahu kanu, nā hale ʻupena, nā ʻōnaehana lepo hoʻomomona, a me nā mea hana — i mālama pono ʻia, hoʻomaikaʻi ʻia, a kākoʻo ʻia e nā Hoa hana i ka wā lōʻihi.</p>
+        <p class="english">The Guild owns the infrastructure that is installed — irrigation systems, planter boxes, net houses, lepo hoʻomomona systems, and tools — so they can be properly cared for, improved, and supported by the Fellows over time.</p>
+      </div>
+
+      <div class="bilingual-pair">
+        <p class="olelo">ʻO kēia ʻano like e pale ana i ka ʻāina o ka Hoa ʻāina a e ʻae ana i ka māla e ikaika aʻe ma lalo o ka mālama like.</p>
+        <p class="english">This shared way protects the Guild Member’s land while allowing the garden to grow stronger under collective care.</p>
+      </div>
+
+      <div class="bilingual-pair">
+        <p class="olelo">Inā haʻalele ka Hoa ʻāina i ka ʻAhahui, nonai ʻo ia i kona ʻāina a me ke ʻano o ka ʻāina.</p>
+        <p class="english">If a Guild Member leaves the Guild, they keep their land and the living landscape.</p>
+      </div>
+
+      <div class="bilingual-pair">
+        <p class="olelo">Hiki ke kūʻai ʻia nā mea a ka ʻAhahui ma ke kumu kūʻai kūpono i emi iho, a i ʻole e wehe ʻia e ka ʻAhahui ke hiki.</p>
+        <p class="english">The Guild’s infrastructure may be purchased at a fair, reduced value, or removed by the Guild when practical.</p>
+      </div>
+
+      <div class="bilingual-pair">
+        <p class="olelo">Aia nā koi ma ka ʻaelike lālā.</p>
+        <p class="english">The specific terms are in the membership agreement.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>Maikaʻi Wai – ʻAhahui o Māla Lanakila</p>
+      <p><a href="https://instagram.com/yourusername" target="_blank">Instagram</a></p>
+    </footer>
+
+  </div>
+</body>
 </html>
