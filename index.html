@@ -1,345 +1,574 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
-    <title>Maikaʻi Wai LLC | Smart Irrigation & Lighting | Oʻahu</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>Maikaʻi Wai – ʻAhahui o Māla Lanakila</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        line-height: 1.65;
+        color: #222;
+        background: #faf9f6;
+        padding: 2rem 1rem 4rem;
+      }
+
+      .container {
+        max-width: 920px;
+        margin: 0 auto;
+      }
+
+      /* Inline Header */
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+        text-align: center;
+      }
+
+      .logo {
+        width: 90px;
+        height: auto;
+        flex-shrink: 0;
+      }
+
+      .title-group h1 {
+        font-size: 1.8rem;
+        font-weight: 650;
+        margin-bottom: 0.1rem;
+        line-height: 1.2;
+      }
+
+      .title-group p {
+        font-size: 1.4rem;
+        font-weight: 650;
+        margin: 0;
+      }
+
+      .section-image {
+        width: 100%;
+        max-height: 320px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        display: block;
+      }
+
+      section {
+        margin-bottom: 4rem;
+      }
+
+      h2 {
+        font-size: 1.45rem;
+        font-weight: 600;
+        margin-bottom: 1.4rem;
+      }
+
+      h2 span {
+        font-weight: 400;
+        color: #666;
+        font-size: 1rem;
+      }
+
+      .bilingual-pair {
+        display: grid;
+        gap: 0.35rem 2.2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .olelo {
+        font-weight: 500;
+      }
+
+      .english {
+        color: #444;
+      }
+
+      /* Hero Section */
+      .hero {
+        position: relative;
+        width: 100%;
+        margin-bottom: 3rem;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      .hero .hero-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 0;
+        margin-bottom: 0;
+      }
+
+      .hero-content {
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.82) 0%,
+          rgba(0, 0, 0, 0.55) 45%,
+          transparent 75%
+        );
+        color: white;
+        padding: 2.75rem 1.75rem 1.75rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .hero-content .olelo {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        line-height: 1.35;
+        color: white;
+      }
+
+      .hero-content .english {
+        font-size: 1.05rem;
+        opacity: 0.95;
+        margin: 0;
+        color: white;
+      }
+
+      /* Footer */
+      footer {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid #ddd;
+        text-align: center;
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      footer a {
+        color: #333;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      footer p {
+        margin-bottom: 0.4rem;
+      }
+
+      /* Desktop / Tablet */
+      @media (min-width: 720px) {
+        .bilingual-pair {
+          grid-template-columns: 1fr 1fr;
+          align-items: start;
+        }
+      }
+
+      /* Mobile */
+      @media (max-width: 719px) {
+        .bilingual-pair {
+          grid-template-columns: 1fr;
+        }
+
+        .site-header {
+          gap: 0.75rem;
+        }
+
+        .logo {
+          width: 72px;
+        }
+
+        .title-group h1 {
+          font-size: 1.45rem;
+        }
+
+        .title-group p {
+          font-size: 0.9rem;
+        }
+
+        /* Mobile hero adjustments */
+        .hero {
+          box-shadow: none;
+          margin-bottom: 1.75rem; /* tighter spacing on mobile */
+        }
+
+        .hero .hero-image {
+          border-radius: 10px;
+        }
+
+        .hero-content {
+          position: static;
+          background: none;
+          color: #222;
+          padding: 1.1rem 0 0;
+        }
+
+        .hero-content .olelo {
+          font-size: 1.15rem;
+          color: #222;
+        }
+
+        .hero-content .english {
+          color: #222;
+          opacity: 1;
+        }
+      }
+    </style>
   </head>
   <body>
-    <!-- Fixed Navbar -->
-    <nav class="navbar" aria-label="Main navigation">
-      <img
-        src="assets/favicon.png"
-        alt="Home - Maikaʻi Wai LLC"
-        class="nav-logo"
-        id="home-button"
-        role="button"
-        tabindex="0"
-      />
-    </nav>
+    <div class="container">
+      <!-- Inline Header with Logo -->
+      <header class="site-header">
+        <img src="images/logo.png" alt="Maikaʻi Wai logo" class="logo" />
+        <div class="title-group">
+          <h1>Maikaʻi Wai</h1>
+          <p>ʻAhahui o Māla Lanakila</p>
+        </div>
+      </header>
 
-    <!-- Desktop-only Navigation Arrows -->
-    <button
-      class="nav-arrow nav-arrow--left"
-      id="prev-button"
-      aria-label="Previous section"
-    >
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-      </svg>
-    </button>
-    <button
-      class="nav-arrow nav-arrow--right"
-      id="next-button"
-      aria-label="Next section"
-    >
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
-      </svg>
-    </button>
-
-    <!-- Main Content Container -->
-    <main class="container" id="main-container">
-      <!-- Hero Section -->
-      <section class="panel hero" id="hero" aria-labelledby="hero-title">
+      <!-- Hero Image -->
+      <section class="hero">
         <img
-          src="assets/logo.png"
-          alt="Maikaʻi Wai LLC Logo"
-          class="hero-logo"
+          src="images/diamondhead.jpg"
+          alt="Maikaʻi Wai – Māla Lanakila"
+          class="hero-image"
         />
-        <!-- Optional: Add accessible heading if needed -->
-        <h1>Maikaʻi Wai LLC – Smart Irrigation & Lighting on Oʻahu.</h1>
+
+        <div class="hero-content">
+          <div class="bilingual-pair">
+            <p class="olelo">
+              Maikaʻi Wai — He ʻoihana e kūkulu ana i nā māla lanakila
+            </p>
+            <p class="english">
+              Maikaʻi Wai — A company that builds victory gardens.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== MISSION ===================== -->
+      <section>
+        <img
+          src="images/watering.jpg"
+          alt="Mission - caring for the land"
+          class="section-image"
+        />
+        <h2>Ke Kuleana <span>(Mission)</span></h2>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            Ma o ka ʻahahui o nā Hoa ʻāina a me nā Hoa hana akamai, e hoʻolālā,
+            e kau, a e mālama mākou i nā māla lanakila i mea e ola ai ka lepo, e
+            ulu ai ka ʻai, a e paʻa ai ka pilina o ke kaiāulu me ka ʻāina.
+          </p>
+          <p class="english">
+            Through a guild of land sponsors and skilled Fellows, we design,
+            install, and care for victory gardens so the soil can live, food can
+            grow, and the connection between community and ʻāina can be
+            strengthened.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== VISION ===================== -->
+      <section>
+        <img
+          src="images/grassswales.jpg"
+          alt="Vision - living homestead"
+          class="section-image"
+        />
+        <h2>Ka ʻIke <span>(Vision)</span></h2>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            ʻO Maikaʻi Wai – ʻAhahui o Māla Lanakila ka ʻahahui e hoʻohui ana i
+            ka poʻe nona ka ʻāina a me ka poʻe mahiʻai akamai ma lalo o ke aloha
+            ʻāina.
+          </p>
+          <p class="english">
+            Maikaʻi Wai – Guilded Fellowship of Māla Lanakila brings landowners
+            and skilled cultivators together in a guild grounded in aloha ʻāina.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            Inā lilo ʻoe i Hoa ʻāina, e hāʻawi ʻoe i ka ʻae no kou ʻāina, a e
+            ʻike ʻoe i kona ulu ʻana i homestead Hawaiʻi e ola ana.
+          </p>
+          <p class="english">
+            As a Guild Member, you license your land and watch it become a
+            living Hawaiian homestead.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            He māla lanakila e hua ai ka ʻai no kou papaʻaina, i hoʻonui ʻia me
+            nā mea kanu ʻōiwi, ka lepo hoʻomomona, a me ka mālama kahiko.
+          </p>
+          <p class="english">
+            It is a productive garden that grows food for your table, enriched
+            with native plants, lepo hoʻomomona, and traditional care.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            ʻO nā Hoa hana, mai ka haumāna a hiki i ke alakaʻi, ka poʻe e hana
+            lima ana me ke akamai ma ka mahiʻai, ka wai, a me nā hana moʻomeheu.
+          </p>
+          <p class="english">
+            Guild Fellows, from apprentices to leads, are the ones who do the
+            hands-on work with skill in gardening, water systems, and cultural
+            practices.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            Ma o ka Pūnaewele Kālepa a me ka Mākeke, hiki i nā Hoa ʻāina ke
+            kālepa i nā waiwai, a hiki i ka lehulehu ke loaʻa nā mea i hana ʻia,
+            e hoʻoikaika ana i ka hana noʻeau a me ka waiwai o ka ʻahahui.
+          </p>
+          <p class="english">
+            Through the Guild Trade Network and the Guild Market, Guild Members
+            can trade goods, and the public can obtain processed materials,
+            strengthening cultural craft and the guild’s resources.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            He ʻahahui akamai kēia ma loko o ke ʻano ʻahahui kālepa, kahi e hui
+            pū ai ka ʻāina, ka ʻike, a me ka nui i mea e ikaika ai ke kaiāulu a
+            me ka ʻāina no nā mea a pau.
+          </p>
+          <p class="english">
+            This is a skilled fellowship within a merchant guild structure,
+            where land, knowledge, and abundance come together to strengthen
+            community and ʻāina for everyone.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== OWNERSHIP ===================== -->
+      <section>
+        <img
+          src="images/compost1.jpg"
+          alt="Ownership - shared care of the land"
+          class="section-image"
+        />
+        <h2>Pehea e Nonai ai <span>(How Ownership Works)</span></h2>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            No nā Hoa ʻāina ka nona piha o ko lākou ʻāina a me ke ʻano ola o ia
+            ʻāina.
+          </p>
+          <p class="english">
+            Guild Members fully own their land and the living landscape.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            No ka ʻAhahui nā mea i kau ʻia — nā ʻōnaehana wai, nā pahu kanu, nā
+            hale ʻupena, nā ʻōnaehana lepo hoʻomomona, a me nā mea hana — i
+            mālama pono ʻia, hoʻomaikaʻi ʻia, a kākoʻo ʻia e nā Hoa hana i ka wā
+            lōʻihi.
+          </p>
+          <p class="english">
+            The Guild owns the infrastructure that is installed — irrigation
+            systems, planter boxes, net houses, lepo hoʻomomona systems, and
+            tools — so they can be properly cared for, improved, and supported
+            by the Fellows over time.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            ʻO kēia ʻano like e pale ana i ka ʻāina o ka Hoa ʻāina a e ʻae ana i
+            ka māla e ikaika aʻe ma lalo o ka mālama like.
+          </p>
+          <p class="english">
+            This shared way protects the Guild Member’s land while allowing the
+            garden to grow stronger under collective care.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            Inā haʻalele ka Hoa ʻāina i ka ʻAhahui, nonai ʻo ia i kona ʻāina a
+            me ke ʻano o ka ʻāina.
+          </p>
+          <p class="english">
+            If a Guild Member leaves the Guild, they keep their land and the
+            living landscape.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            Hiki ke kūʻai ʻia nā mea a ka ʻAhahui ma ke kumu kūʻai kūpono i emi
+            iho, a i ʻole e wehe ʻia e ka ʻAhahui ke hiki.
+          </p>
+          <p class="english">
+            The Guild’s infrastructure may be purchased at a fair, reduced
+            value, or removed by the Guild when practical.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">Aia nā koi ma ka ʻaelike lālā.</p>
+          <p class="english">
+            The specific terms are in the membership agreement.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== MEMBERSHIP ===================== -->
+      <section>
+        <img src="images/sunset.jpg" alt="" class="section-image" />
+
+        <h2>Lālā <span>(Membership)</span></h2>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            Ua wehewehe ʻia ma luna pehea e hoʻonohonoho ʻia ai ka ʻahahui. ʻO
+            ke ʻano maʻalahi e hoʻomaka ai i ia pilina, ʻo ka lālā.
+          </p>
+          <p class="english">
+            The structure above describes how the ʻahahui is organized. The
+            practical way to begin that relationship is through membership.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            <strong>Lālā Mālama Māla Lanakila</strong><br />
+            $1,000 i kēlā me kēia mahina
+          </p>
+          <p class="english">
+            <strong>Māla Lanakila Maintenance Membership</strong><br />
+            $1,000 per month
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            He pilina pule e kālele ana i ka mālama a me ka hoʻoulu mālie o kou
+            ʻāina.
+          </p>
+          <p class="english">
+            A dedicated weekly relationship focused on the care and steady
+            cultivation of your land.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            I kēlā me kēia pule, hoʻolilo au i ka lā holoʻokoʻa ma kou wahi e
+            mālama i ka ʻāina, e lawelawe i ka ʻōnaehana lepo hoʻomomona, e
+            hoʻoulu a mālama i nā mea kanu i loko o nā ipu, a e kākoʻo i ka wai
+            kulu ma luna o ka lepo inā pono. He hana paʻa, noʻonoʻo, a paʻa i ke
+            aloha ʻāina — e kūkulu ana i ke olakino o ka lepo, ka ikaika o nā
+            mea kanu, a me ke kūpaʻa lōʻihi me ka wikiwiki ʻole i nā mea paʻa.
+          </p>
+          <p class="english">
+            Each week I spend a full day on your property maintaining the
+            landscape, managing the compost system, propagating and tending
+            container plants, and supporting temporary above-ground irrigation
+            as needed. The work is consistent, thoughtful, and rooted in aloha
+            ʻāina — building soil health, plant vitality, and long-term
+            resilience without rushing into permanent infrastructure.
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            <strong>Nā mea i komo:</strong><br />
+            • Ka mālama ʻāina o kēlā me kēia pule (ʻoki mauʻu, ʻoki lālā,
+            weeding, a me ka hoʻomaʻemaʻe)<br />
+            • Ka lawelawe ʻana i ka ʻōnaehana lepo hoʻomomona<br />
+            • Ka hoʻoulu a me ka mālama ʻana i nā mea kanu i loko o nā ipu<br />
+            • Ke kākoʻo ʻana i ka wai kulu ma luna o ka lepo no ke olakino o nā
+            mea kanu<br />
+            • Ka nānā ʻana a me nā memo e pili ana i ka lepo, nā mea kanu, a me
+            nā ʻōnaehana<br />
+            • Ka kamaʻilio pololei a me ka mālama ma muli o ka pilina
+          </p>
+          <p class="english">
+            <strong>What’s included:</strong><br />
+            • Weekly landscape maintenance (mowing, trimming, edging, weeding,
+            and cleanup)<br />
+            • Ongoing compost system management and turning<br />
+            • Propagation and care of potted and container plants<br />
+            • Temporary above-ground drip irrigation support for plant health<br />
+            • Progressive observation and notes on soil, plant, and system
+            needs<br />
+            • Direct communication and relationship-based care
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            <strong>Nā mea ʻaʻole i komo</strong> (e loaʻa ma hope ke loaʻa ka
+            laikini kūpono):<br />
+            • Ke kau ʻana i nā ʻōnaehana wai paʻa<br />
+            • Nā hale ʻupena a i ʻole nā mea paʻa ʻē aʻe<br />
+            • Ke kūkulu nui ʻana i nā māla a i ʻole ka hoʻoponopono ʻāina<br />
+            • Nā ʻōnaehana kanu nui
+          </p>
+          <p class="english">
+            <strong>What’s not included</strong> (available later under proper
+            licensing):<br />
+            • Permanent irrigation installation<br />
+            • Permanent nursery structures or hardscape<br />
+            • Major bed construction or grading<br />
+            • Large-scale planting systems
+          </p>
+        </div>
+
+        <div class="bilingual-pair">
+          <p class="olelo">
+            He lālā kēia, ʻaʻole he lawelawe hoʻokahi. Ke hoʻolilo nei ʻoe i ka
+            mālama paʻa o ka ʻāina a me ka pilina hana me kekahi i kūpaʻa i ka
+            ʻike lōʻihi o ka māla lanakila e ola ana.
+          </p>
+          <p class="english">
+            This is a membership, not a one-off service. You are investing in
+            consistent stewardship of the land and a working relationship with
+            someone committed to the long-term vision of a living māla lanakila.
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <p>Maikaʻi Wai – ʻAhahui o Māla Lanakila</p>
         <p>
-          Maikaʻi Wai LLC – Ka lawelawe akamai i ka holowai a me ka mālamalama
-          ma Oʻahu.
-        </p>
-        <dl class="bilingual">
-          <dt>
-            Ho'oulu '&Amacr;ina me ka Mea Kanu, Holowai, M&amacr;lamalama, a me
-            Ho'o Akamai
-          </dt>
-          <dd>
-            Nurturing the Land with Plants, Flowing Water, Illumination, and
-            Smart Technology
-          </dd>
-
-          <dt>
-            I k&emacr;ia au hou, loa'a i k&emacr;l&amacr; me k&emacr;ia mea nona
-            ka '&amacr;ina ke kuleana o ka m&amacr;lama '&amacr;ina.
-          </dt>
-          <dd>
-            Even in modern times, every landowner carries the responsibility to
-            care for the land.
-          </dd>
-
-          <dt>He aliʻi ka ʻāina; he kauwā ke kanaka.</dt>
-          <dd>
-            The land is chief; man is its servant. We honor this wisdom through
-            modern stewardship.
-          </dd>
-        </dl>
-      </section>
-
-      <!-- Section 2 -->
-      <section class="panel" aria-labelledby="section2-title">
-        <div class="panel-content">
-          <h1 id="section2-title">Ho'oulu 'Aina</h1>
-          <dl class="bilingual">
-            <dt>
-              ʻO ka mālama ʻāina ka hana nui o ke ola— ka hoʻoulu ʻana i ka pono
-              a me ka nani o Hawaiʻi no nā hanauna hou.
-            </dt>
-            <dd>
-              Care for the land is the sacred work of life— nurturing the
-              balance and beauty of Hawaiʻi for generations to come.
-            </dd>
-
-            <dt>Ma Maikaʻi Wai,</dt>
-            <dd>At Maikaʻi Wai,</dd>
-
-            <dt>
-              hui pū mākou i ka ʻike kūpuna me nā hana akamai o kēia au, e kōkua
-              ana iā ʻoe e hoʻōla i kāu ʻāina ma Oʻahu
-            </dt>
-            <dd>
-              we blend ancestral knowledge with today's smart solutions, helping
-              you revive your Oʻahu land
-            </dd>
-
-            <dt>me ka maʻalahi a me ka ʻoluʻolu piha.</dt>
-            <dd>effortlessly and with complete satisfaction.</dd>
-          </dl>
-        </div>
-      </section>
-
-      <!-- Section 3 -->
-      <section class="panel" aria-labelledby="section3-title">
-        <div class="panel-content">
-          <h1 class="panel-title">Nā Mea Kanu</h1>
-
-          <dl class="bilingual">
-            <dt>
-              Nā mea kanu maoli nā kumu ola o ka ʻāina— e like me ka ʻōhiʻa
-              lehua e kū pono i ka pele,
-            </dt>
-            <dd>
-              Native plants are the living roots of the land— like the ʻōhiʻa
-              lehua standing strong against lava,
-            </dd>
-
-            <dt></dt>
-            <dd></dd>
-
-            <dt>
-              ke kalo e hānai ana i ka lāhui, a me ke ki e pale ana i ka ʻohana.
-            </dt>
-            <dd>
-              kalo nourishing the people, and ti leaves protecting the family.
-            </dd>
-
-            <dt></dt>
-            <dd></dd>
-
-            <dt>I kēia mau lā, hoʻopilikia nā mea kanu ʻē i ke kaiaola,</dt>
-            <dd>Today, invasive species disrupt the ecosystem,</dd>
-
-            <dt></dt>
-            <dd></dd>
-
-            <dt>
-              akā ma ke koho ʻana i nā mea maoli o Oʻahu a me ka hoʻihoʻi ʻana i
-              ka pono,
-            </dt>
-            <dd>
-              but by choosing Oʻahu's native plants and restoring balance,
-            </dd>
-
-            <dt></dt>
-            <dd></dd>
-
-            <dt>
-              hiki ke ulu hou ka nani a me ka ikaika o ka ʻāina me ka hana
-              liʻiliʻi.
-            </dt>
-            <dd>
-              the land's beauty and resilience can flourish with minimal effort.
-            </dd>
-
-            <dt>Ma Maikaʻi Wai,</dt>
-            <dd>At Maikaʻi Wai,</dd>
-
-            <dt>kōkua mākou iā ʻoe e hoʻoulu i kēia kaiaola paʻa</dt>
-            <dd>we help you grow this enduring ecosystem</dd>
-
-            <dt>me ka ʻoluʻolu piha.</dt>
-            <dd>with complete satisfaction.</dd>
-          </dl>
-        </div>
-      </section>
-
-      <!-- Section 4 -->
-      <section class="panel" aria-labelledby="section4-title">
-        <div class="panel-content">
-          <h1 id="section4-title">Holowai</h1>
-          <dl class="bilingual">
-            <dt>
-              ʻO ka wai ka waiwai nui loa— ke kahe ola e hānai ana i nā mea kanu
-              a me ka ʻāina holoʻokoʻa.
-            </dt>
-            <dd>
-              Water is the greatest wealth— the flowing life that nourishes
-              plants and the entire land.
-            </dd>
-
-            <dt>
-              Ma Oʻahu, he mea nui ka mālama pono ʻana i ka wai no ka pale ʻana
-              i ka maloʻo a me ka hoʻopau nui.
-            </dt>
-            <dd>
-              On Oʻahu, proper water stewardship is essential to prevent drought
-              and waste.
-            </dd>
-
-            <dt>
-              Ma Maikaʻi Wai, hoʻolālā mākou i nā ʻōnaehana holowai akamai i
-              kūpono i ke anilā o kēia pae ʻāina,
-            </dt>
-            <dd>
-              At Maikaʻi Wai, we design smart irrigation systems suited to this
-              island's climate,
-            </dd>
-
-            <dt>
-              e hōʻemi ana i nā bila a e hōʻoia i ka ulu maikaʻi mau me ka hana
-              liʻiliʻi a me ka ʻoluʻolu piha.
-            </dt>
-            <dd>
-              reducing bills and ensuring consistent thriving growth with
-              minimal effort and complete satisfaction.
-            </dd>
-          </dl>
+          <a href="https://instagram.com/yourusername" target="_blank"
+            >Instagram</a
           >
-        </div>
-      </section>
-
-      <!-- Section 5 -->
-      <section class="panel" aria-labelledby="section5-title">
-        <div class="panel-content">
-          <h1 id="section5-title">M&amacr;lamalama</h1>
-          <dl class="bilingual">
-            <dt>
-              ʻO ka mālamalama ka hōʻike o ka mana pō— e hoʻāla ana i ka nani o
-              ka ʻāina ma hope o ka napoʻo ʻana o ka lā, e like me nā hōkū i
-              alakaʻi ai i nā kūpuna.
-            </dt>
-            <dd>
-              Illumination reveals the spirit of the night— awakening the land's
-              beauty after sunset, like the stars that guided our ancestors.
-            </dd>
-
-            <dt>
-              Hiki ke lilo ka pō i wahi palekana ʻole inā ʻaʻole mālamalama
-              pono, akā me nā ʻōnaehana maikaʻi e hoʻomālamalama i nā ala hele a
-              me nā lāʻau niu,
-            </dt>
-            <dd>
-              Without proper light, the night can feel unsafe, but with
-              well-designed systems highlighting pathways and palms,
-            </dd>
-
-            <dt>
-              e hoʻolilo ʻia ka ʻāina i wahi kupua a maluhia me ka mālama ikehu.
-            </dt>
-            <dd>
-              the land becomes a magical and peaceful sanctuary while conserving
-              energy.
-            </dd>
-
-            <dt>Ma Maikaʻi Wai,</dt>
-            <dd>At Maikaʻi Wai,</dd>
-
-            <dt>hana mākou i kēia mālamalama nani no ʻoe me ka maʻalahi.</dt>
-            <dd>we create this beautiful illumination for you effortlessly.</dd>
-          </dl>
-        </div>
-      </section>
-
-      <!-- Section 6 -->
-      <section class="panel" aria-labelledby="section6-title">
-        <div class="panel-content">
-          <h1 id="section6-title">Ho'o Akamai</h1>
-          <dl class="bilingual">
-            <dt>
-              ʻO ka hoʻo akamai ka hoʻohui ʻana i ka naʻauao kūpuna me ka
-              ʻenehana o kēia au— e like me ka poʻe kahiko i heluhelu ai i nā
-              hōkū a me nā ao.
-            </dt>
-            <dd>
-              Smart technology unites ancestral wisdom with today's tools— like
-              the ancients reading stars and clouds.
-            </dd>
-
-            <dt>
-              Hiki i nā ʻōnaehana akamai ke pane i ke ea o Oʻahu, e hoʻomalu i
-              ka holowai a me ka mālamalama ma ke kelepona,
-            </dt>
-            <dd>
-              Smart systems can respond to Oʻahu's weather, controlling
-              irrigation and lighting via app,
-            </dd>
-
-            <dt>
-              e hōʻemi i ka hoʻopau a e hana i kāu ʻāina i paʻa me ka hana ʻole
-              maiā ʻoe.
-            </dt>
-            <dd>
-              reducing waste and making your landscape resilient without daily
-              effort from you.
-            </dd>
-
-            <dt>
-              Ma Maikaʻi Wai, lawe mākou i kēia naʻauao hou iā ʻoe me ka
-              ʻoluʻolu piha.
-            </dt>
-            <dd>
-              At Maikaʻi Wai, we bring this modern wisdom to you with complete
-              satisfaction.
-            </dd>
-          </dl>
-        </div>
-      </section>
-
-      <!-- Footer Section -->
-      <section class="panel footer" aria-labelledby="footer-title">
-        <div class="panel-content">
-          <h1 id="footer-title">E K&amacr;hea Mai</h1>
-          <dl class="bilingual">
-            <dt>Ua mākaukau ʻoe e aʻo hou a e hoʻoulu i kou ʻāina ponoʻī?</dt>
-            <dd>Ready to learn more and nurture your own land?</dd>
-
-            <dt>
-              E kāhea mai no ke kūkākūkā manuahi— e hoʻomaka kākou i ka huakaʻi
-              mālama ʻāina me ke aloha.
-            </dt>
-            <dd>
-              Contact us for a free consultation— let's begin the journey of
-              caring for the land with aloha.
-            </dd>
-          </dl>
-        </div>
-      </section>
-
-      <!-- Desktop: Page Indicators | Mobile: Hidden -->
-      <div class="page-indicators" role="status" aria-label="Page indicators">
-        <span class="indicator" data-index="0" aria-hidden="true"></span>
-        <span class="indicator" data-index="1" aria-hidden="true"></span>
-        <span class="indicator" data-index="2" aria-hidden="true"></span>
-        <span class="indicator" data-index="3" aria-hidden="true"></span>
-      </div>
-    </main>
-
-    <script src="script.js"></script>
+        </p>
+      </footer>
+    </div>
   </body>
 </html>
