@@ -44,7 +44,7 @@
       }
 
       .logo {
-        width: 90px; /* was 64px */
+        width: 90px;
         height: auto;
         flex-shrink: 0;
       }
@@ -60,15 +60,6 @@
         font-size: 1.4rem;
         font-weight: 650;
         margin: 0;
-      }
-
-      .hero-image {
-        width: 100%;
-        max-height: 420px;
-        object-fit: cover;
-        border-radius: 10px;
-        margin-bottom: 3rem;
-        display: block;
       }
 
       .section-image {
@@ -110,6 +101,54 @@
         color: #444;
       }
 
+      /* Hero Section */
+      .hero {
+        position: relative;
+        width: 100%;
+        margin-bottom: 3rem;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      .hero .hero-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 0;
+        margin-bottom: 0;
+      }
+
+      .hero-content {
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.82) 0%,
+          rgba(0, 0, 0, 0.55) 45%,
+          transparent 75%
+        );
+        color: white;
+        padding: 2.75rem 1.75rem 1.75rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .hero-content .olelo {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        line-height: 1.35;
+        color: white;
+      }
+
+      .hero-content .english {
+        font-size: 1.05rem;
+        opacity: 0.95;
+        margin: 0;
+        color: white;
+      }
+
       /* Footer */
       footer {
         margin-top: 4rem;
@@ -133,7 +172,7 @@
         margin-bottom: 0.4rem;
       }
 
-      /* Desktop */
+      /* Desktop / Tablet */
       @media (min-width: 720px) {
         .bilingual-pair {
           grid-template-columns: 1fr 1fr;
@@ -162,6 +201,33 @@
         .title-group p {
           font-size: 0.9rem;
         }
+
+        /* Mobile hero adjustments */
+        .hero {
+          box-shadow: none;
+          margin-bottom: 1.75rem; /* tighter spacing on mobile */
+        }
+
+        .hero .hero-image {
+          border-radius: 10px;
+        }
+
+        .hero-content {
+          position: static;
+          background: none;
+          color: #222;
+          padding: 1.1rem 0 0;
+        }
+
+        .hero-content .olelo {
+          font-size: 1.15rem;
+          color: #222;
+        }
+
+        .hero-content .english {
+          color: #222;
+          opacity: 1;
+        }
       }
     </style>
   </head>
@@ -177,11 +243,24 @@
       </header>
 
       <!-- Hero Image -->
-      <img
-        src="images/diamondhead.jpg"
-        alt="Maikaʻi Wai garden"
-        class="hero-image"
-      />
+      <section class="hero">
+        <img
+          src="images/diamondhead.jpg"
+          alt="Maikaʻi Wai – Māla Lanakila"
+          class="hero-image"
+        />
+
+        <div class="hero-content">
+          <div class="bilingual-pair">
+            <p class="olelo">
+              Maikaʻi Wai — He ʻoihana e kūkulu ana i nā māla lanakila
+            </p>
+            <p class="english">
+              Maikaʻi Wai — A company that builds victory gardens.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <!-- ===================== VISION ===================== -->
       <section>
