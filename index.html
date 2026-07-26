@@ -15,6 +15,10 @@
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         font-family:
           system-ui,
@@ -149,6 +153,69 @@
         color: white;
       }
 
+      /* CTA Button */
+      .cta-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 3.5rem 0 2rem;
+        position: relative;
+      }
+
+      .cta-wrapper::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #111;
+        z-index: 0;
+      }
+
+      .cta-button {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.9rem 2.8rem;
+        background: linear-gradient(145deg, #d4af37, #b8860b 45%, #c9a227);
+        color: #111;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.05rem;
+        line-height: 1.3;
+        border: 2px solid #111;
+        clip-path: polygon(
+          12% 0%,
+          88% 0%,
+          100% 50%,
+          88% 100%,
+          12% 100%,
+          0% 50%
+        );
+        min-width: 260px;
+        text-align: center;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .cta-button span {
+        font-size: 0.88rem;
+        font-weight: 500;
+        opacity: 0.9;
+        margin-top: 0.15rem;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+      }
+
       /* Footer */
       footer {
         margin-top: 4rem;
@@ -205,7 +272,7 @@
         /* Mobile hero adjustments */
         .hero {
           box-shadow: none;
-          margin-bottom: 1.75rem; /* tighter spacing on mobile */
+          margin-bottom: 1.75rem;
         }
 
         .hero .hero-image {
@@ -261,6 +328,13 @@
           </div>
         </div>
       </section>
+
+      <div class="cta-wrapper" style="margin-top: 0.5rem; margin-bottom: 3rem">
+        <a href="#membership" class="cta-button">
+          E pili i ka Lālā
+          <span>About Membership</span>
+        </a>
+      </div>
 
       <!-- ===================== MISSION ===================== -->
       <section>
@@ -444,7 +518,7 @@
       </section>
 
       <!-- ===================== MEMBERSHIP ===================== -->
-      <section>
+      <section id="membership">
         <img src="images/sunset.jpg" alt="" class="section-image" />
 
         <h2>Lālā <span>(Membership)</span></h2>
@@ -559,6 +633,13 @@
           </p>
         </div>
       </section>
+
+      <div class="cta-wrapper">
+        <a href="YOUR-GOOGLE-FORM-LINK" target="_blank" class="cta-button">
+          E noi i ka Lālā
+          <span>Apply for Membership</span>
+        </a>
+      </div>
 
       <!-- Footer -->
       <footer>
