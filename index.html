@@ -648,5 +648,12 @@
         </p>
       </footer>
     </div>
+
+    <script>
+      // Remove the hash from the URL after scrolling so refresh stays at the top
+      if (window.location.hash) {
+        history.replaceState(null, null, window.location.pathname);
+      }
+    </script>
   </body>
 </html>
