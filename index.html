@@ -37,33 +37,52 @@
         margin: 0 auto;
       }
 
-      /* Inline Header */
+      /* Header */
       .site-header {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: 1rem;
+        gap: 0.4rem;
         margin-bottom: 2.5rem;
         text-align: center;
       }
 
+      .header-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+      }
+
       .logo {
-        width: 90px;
+        width: 120px;
         height: auto;
         flex-shrink: 0;
       }
 
       .title-group h1 {
-        font-size: 1.8rem;
+        font-size: 2.25rem;
         font-weight: 650;
-        margin-bottom: 0.1rem;
-        line-height: 1.2;
+        margin-bottom: 0.15rem;
+        line-height: 1.15;
       }
 
       .title-group p {
-        font-size: 1.4rem;
-        font-weight: 650;
+        font-size: 1.2rem;
+        font-weight: 600;
         margin: 0;
+      }
+
+      .tagline {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: #111;
+        letter-spacing: 0.02em;
+        border-top: 1px solid #222;
+        padding-top: 0.45rem;
+        width: 100%;
+        max-width: 480px;
       }
 
       .section-image {
@@ -247,19 +266,29 @@
         }
 
         .site-header {
+          gap: 0.35rem;
+        }
+
+        .header-top {
           gap: 0.75rem;
         }
 
         .logo {
-          width: 72px;
+          width: 92px;
         }
 
         .title-group h1 {
-          font-size: 1.45rem;
+          font-size: 1.75rem;
         }
 
         .title-group p {
-          font-size: 0.9rem;
+          font-size: 1.05rem;
+        }
+
+        .tagline {
+          font-size: 1rem;
+          max-width: 340px;
+          padding-top: 0.4rem;
         }
 
         /* Mobile hero adjustments */
@@ -295,11 +324,14 @@
     <div class="container">
       <!-- Inline Header with Logo -->
       <header class="site-header">
-        <img src="images/logo.png" alt="Maikaʻi Wai logo" class="logo" />
-        <div class="title-group">
-          <h1>Maikaʻi Wai</h1>
-          <p>ʻAhahui o Māla Lanakila</p>
+        <div class="header-top">
+          <img src="images/logo.png" alt="Maikaʻi Wai logo" class="logo" />
+          <div class="title-group">
+            <h1>Maikaʻi Wai</h1>
+            <p>ʻAhahui o Māla Lanakila</p>
+          </div>
         </div>
+        <p class="tagline">Guilded Fellowship of Victory Gardens</p>
       </header>
 
       <!-- Hero Image -->
